@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y Condiciones - García's Pizzas</title>
+<meta name="description" content="Términos y Condiciones de García's Pizzas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rojo:#ed1f25;
+  --rojo-dark:#b01519;
+  --amarillo:#faec00;
+  --naranja:#f6a419;
+  --negro:#110500;
+  --negro2:#1e0800;
+  --crema:#fff8f0;
+  --ff-d:'Bangers',cursive;
+  --ff-h:'Oswald',sans-serif;
+  --ff-b:'Nunito',sans-serif;
+}
+*,*::before,*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--ff-b);
+  background:var(--negro);
+  color:#fff;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{text-decoration:none;}
+img{max-width:100%;display:block;}
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:200;
+  background:rgba(17,5,0,.97);
+  border-bottom:3px solid var(--rojo);
+  padding:10px 1.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  backdrop-filter:blur(10px);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo img{height:52px;width:52px;object-fit:contain;border-radius:4px;}
+.logo-text{font-family:var(--ff-d);font-size:1.5rem;color:var(--amarillo);letter-spacing:.05em;line-height:1;}
+.logo-sub{font-family:var(--ff-h);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.45);text-transform:uppercase;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.85);font-family:var(--ff-h);font-size:14px;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--amarillo);}
+.nav-cta{background:var(--rojo);color:#fff;border:none;padding:9px 20px;font-family:var(--ff-h);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:.2s;white-space:nowrap;}
+.nav-cta:hover{background:var(--rojo-dark);}
+.container{
+  max-width:900px;
+  margin:0 auto;
+  padding:100px 2rem 3rem;
+}
+.page-header{
+  text-align:center;
+  margin-bottom:3rem;
+  padding-bottom:2rem;
+  border-bottom:3px solid var(--rojo);
+}
+.page-header h1{
+  font-family:var(--ff-h);
+  font-size:2.5rem;
+  color:var(--rojo);
+  margin-bottom:0.5rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.page-header p{
+  color:#fff;
+  font-size:0.95rem;
+  letter-spacing:1px;
+}
+section{margin-bottom:2.5rem;}
+h2{
+  font-family:var(--ff-h);
+  font-size:1.8rem;
+  color:var(--rojo);
+  margin-bottom:1rem;
+  margin-top:2rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  border-left:4px solid var(--rojo);
+  padding-left:1rem;
+}
+h3{
+  font-family:var(--ff-h);
+  font-size:1.2rem;
+  color:#fff;
+  margin-bottom:0.8rem;
+  margin-top:1.5rem;
+  letter-spacing:0.5px;
+  font-weight:600;
+}
+p{
+  line-height:1.8;
+  color:#fff;
+  margin-bottom:1rem;
+  font-size:0.95rem;
+}
+ul,ol{
+  margin-left:1.5rem;
+  margin-bottom:1rem;
+}
+li{
+  line-height:1.8;
+  color:#fff;
+  margin-bottom:0.5rem;
+  font-size:0.95rem;
+}
+strong{
+  color:var(--rojo);
+  font-weight:700;
+}
+em{
+  color:var(--naranja);
+  font-style:italic;
+}
+.highlight-box{
+  background:rgba(237,31,37,0.08);
+  border-left:4px solid var(--rojo);
+  padding:1.5rem;
+  margin:1.5rem 0;
+  border-radius:0 4px 4px 0;
+}
+footer{
+  background:#060100;
+  border-top:3px solid var(--rojo);
+  padding:2rem 1.5rem;
+  margin-top:3rem;
+  text-align:center;
+}
+.footer-text{
+  font-size:0.85rem;
+  color:rgba(255,255,255,.35);
+}
+.footer-link{
+  color:var(--amarillo);
+  transition:color .2s;
+}
+.footer-link:hover{
+  color:#fff;
+}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .container{padding:100px 1rem 2rem;}
+  .page-header h1{font-size:1.8rem;}
+  h2{font-size:1.4rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div>
+      <div class="logo-text">García's Pizzas</div>
+      <div class="logo-sub">Con el sello que nos caracteriza</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#inicio">Inicio</a></li>
+    <li><a href="index.html#menu">Menú</a></li>
+    <li><a href="index.html#empanadas">Empanadas</a></li>
+    <li><a href="index.html#combos">Combos</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="window.location.href='index.html#menu'">Pedir Ahora</button>
+</nav>
+
+<div class="container">
+
+<div class="page-header">
+  <h1>Términos y Condiciones</h1>
+  <p>garciaspizzas.com</p>
+</div>
+
+<section>
+<h2>1. Información General</h2>
+<p>El presente documento establece los términos bajo los cuales García's Pizzas ofrece sus productos y servicios a través de este sitio web. Al acceder y comprar, el usuario acepta estos términos en su totalidad.</p>
+
+<h3>Política de Uso Responsable</h3>
+<p>Los usuarios se comprometen a utilizar la página web de García's Pizza de manera responsable, respetando la finalidad del servicio: consultar información, realizar pedidos y acceder a promociones.</p>
+<p>Queda prohibido el uso del sitio para actividades fraudulentas, envío de información falsa o cualquier acción que afecte el correcto funcionamiento de la plataforma.</p>
+
+<h3>Exactitud de la Información</h3>
+<p>El cliente es responsable de proporcionar datos correctos y completos al realizar un pedido (nombre, dirección, teléfono de contacto, método de pago).</p>
+<p>García's Pizza no se hace responsable por pedidos no entregados debido a información incompleta o incorrecta proporcionada por el usuario.</p>
+
+<h3>Condiciones Externas y Fallas Técnicas</h3>
+<p>En caso de fallas de energía eléctrica, problemas de servidor, interrupciones de internet u otros eventos externos, el sistema podría no recibir el pedido de manera completa.</p>
+<p>García's Pizza no garantiza la recepción inmediata de pedidos en estas circunstancias y se reserva el derecho de confirmar la orden directamente con el cliente por teléfono o WhatsApp.</p>
+
+<h3>Confirmación de Pedidos</h3>
+<p>Un pedido se considera válido únicamente cuando el cliente recibe confirmación oficial de García's Pizza a través de los canales autorizados (correo electrónico, WhatsApp, llamada telefónica o notificación en la página).</p>
+<p>Si el cliente no recibe confirmación, se recomienda contactar directamente a la sucursal para verificar el estado del pedido.</p>
+
+<h3>Limitación de Responsabilidad</h3>
+<p>García's Pizza no será responsable por pérdidas o inconvenientes derivados de fallas técnicas externas, siempre que se realicen los esfuerzos razonables para atender y confirmar los pedidos.</p>
+</section>
+
+<section>
+<h2>2. Orden de Tickets y Tiempo de Preparación</h2>
+<p>Los pedidos se procesan estrictamente en orden cronológico de recepción, integrando de manera equitativa las órdenes realizadas de forma presencial, vía redes sociales y a través de nuestra página web.</p>
+<p>El tiempo estándar de preparación es de <strong>15 minutos por pedido</strong>. Sin embargo, el cliente acepta que este plazo es estimativo y podrá extenderse sin previo aviso durante horas pico, días festivos o períodos de alta demanda.</p>
+<p>García's Pizza se compromete a informar al cliente sobre el tiempo de espera actualizado al momento de confirmar su compra, pero no se hace responsable por retrasos derivados de la saturación del servicio o factores externos de logística.</p>
+</section>
+
+<section>
+<h2>3. Proceso de Pedidos y Precios</h2>
+
+<h3>Precios</h3>
+<p>Servicio a domicilio sin cargo extra a partir de un consumo mínimo de $120 o $30 por delivery en caso de un menor consumo. A mayor distancia mayor consumo, hasta un máximo de 6 km a la redonda.</p>
+
+<h3>Disponibilidad</h3>
+<p>Los ingredientes están disponibles para su pedido. En caso contrario, se informa al cliente que esa pizza no está disponible.</p>
+
+<h3>Modificaciones</h3>
+<p>Una vez que el pedido entra en estado de 'Cocción', no se aceptan cambios ni cancelaciones. Puedes hacer cambios en tu pedido cuando está aún en preparación antes de meter al horno. El cliente debe notificar inmediatamente por WhatsApp y/o Llamada.</p>
+</section>
+
+<section>
+<h2>4. Entrega y Envío (Delivery)</h2>
+
+<h3>Zonas de Cobertura</h3>
+<p>Tenemos cobertura desde la pizzería hasta tu domicilio a una distancia máxima de <strong>6 km</strong> a la redonda.</p>
+<ul>
+<li><strong>Oeste:</strong> Gasolinera de San Pablo y alrededores</li>
+<li><strong>Norte:</strong> Iglesia de San Francisco</li>
+<li><strong>Sur:</strong> El Denji y alrededores</li>
+<li><strong>Este:</strong> Crucero de Doxhicho y alrededores</li>
+</ul>
+
+<h3>Tiempos de Entrega</h3>
+<p>Los tiempos estimados para entregar su pizza son de <strong>35-45 minutos</strong>. Factores externos como clima o tráfico pueden variar.</p>
+
+<h3>Recepción</h3>
+<p>El cliente debe estar presente en el domicilio. Tras 5 minutos de espera, el repartidor se retira. Para realizar una segunda entrega del mismo pedido tendrá un costo de delivery de $30 para su re-entrega.</p>
+</section>
+
+<section>
+<h2>5. Formas de Pago</h2>
+
+<h3>Medios de Pago</h3>
+<p>Tarjetas de crédito/débito, transferencias o pago contra entrega del producto (efectivo/terminal).</p>
+
+<h3>Seguridad</h3>
+<div class="highlight-box">
+<p><strong>Los datos bancarios</strong> son procesados por pasarelas externas seguras (como Mercado Pago) y la pizzería a través de sus punto de cobro y sistemas de gestión <strong>no almacena</strong> nombres, número de tarjeta, fecha ni NIP de su tarjeta.</p>
+</div>
+</section>
+
+<section>
+<h2>6. Políticas de Cancelación y Reembolsos</h2>
+
+<h3>Errores en el Pedido</h3>
+<p>Si la pizza llega fría, dañada o no es lo solicitado, el cliente debe reportarlo en un plazo máximo de <strong>30 minutos</strong> tras la recepción para procesar una reposición o devolución de su dinero.</p>
+
+<h3>Cancelaciones de Pedido</h3>
+<p>Al tratarse de productos perecederos de consumo inmediato, generalmente no aplica el derecho de retracto una vez cocinado el producto.</p>
+</section>
+
+<section>
+<h2>7. Información Nutricional y Alergenos</h2>
+
+<h3>Aviso de Ingredientes</h3>
+<p>Los insumos se adquieren diariamente y pueden contener gluten, lácteos, embutidos, productos enlatados, etc. La empresa no se hace responsable por reacciones alérgicas si el cliente no consultó previamente antes de su consumo.</p>
+</section>
+
+<section>
+<h2>8. Propiedad Intelectual</h2>
+<p>Todo el contenido del sitio (logos, fotos de las pizzas, textos) es propiedad de García's Pizzas y está prohibido su uso sin autorización previa.</p>
+</section>
+
+<section>
+<h2>9. Responsabilidad</h2>
+<p>La pizzería no será responsable por:</p>
+<ul>
+<li>Daños indirectos derivados del uso del sitio</li>
+<li>Retrasos causados por terceros</li>
+<li>Uso indebido del producto por parte del cliente</li>
+</ul>
+</section>
+
+<section>
+<h2>10. Disponibilidad de Promociones</h2>
+<p>Todas nuestras promociones están disponibles todos los días, excepto en días festivos y feriados oficiales.</p>
+
+<h3>Cambios sin Previo Aviso</h3>
+<p>García's Pizza se reserva el derecho de modificar, suspender o cancelar cualquier promoción, precio o beneficio en cualquier momento, sin necesidad de previo aviso.</p>
+
+<h3>Aplicación de Promociones</h3>
+<p>Las promociones no son acumulables con otras ofertas, sucursales, descuentos o beneficios especiales, salvo que se indique expresamente. Las promociones se aplican únicamente en los canales de venta autorizados por García's Pizza (en sucursal centro, teléfono, WhatsApp, página web, aplicaciones de reparto).</p>
+
+<h3>Restricciones y Condiciones</h3>
+<p>Las promociones están sujetas a disponibilidad de productos e ingredientes. García's Pizza no se hace responsable por interpretaciones erróneas de las condiciones de las promociones. Al participar en nuestras promociones, el cliente acepta las condiciones aquí descritas.</p>
+</section>
+
+<section>
+<h2>11. Aceptación Expresa de los Términos y Condiciones</h2>
+<div class="highlight-box">
+<p>El usuario reconoce y acepta que, desde el momento en que accede, navega o utiliza este sitio web, queda automáticamente sujeto a los presentes Términos y Condiciones, sin necesidad de aceptación expresa adicional.</p>
+
+<p>Asimismo, el cliente acepta que, al realizar cualquier pedido, compra o consumo de productos, ya sea a través del sitio web, por medios digitales, telefónicos o de manera presencial en mostrador, está manifestando su aceptación total de estos Términos y Condiciones.</p>
+
+<p>En consecuencia, cualquier uso del sitio web, así como la realización de pedidos en tienda física o en línea, implica la aceptación plena, consciente y sin reservas de todas las disposiciones aquí establecidas.</p>
+</div>
+</section>
+
+</div>
+
+<footer>
+<p class="footer-text">García's Pizzas © 2024 | <a href="terminos.html" class="footer-link">Términos</a> • <a href="privacidad.html" class="footer-link">Privacidad</a></p>
+<p class="footer-text">Andres Molina Enriquez 121, Jilotepec, Edo. de México | Teléfono: (761) 688-1727</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad - García's Pizzas</title>
+<meta name="description" content="Política de Privacidad de García's Pizzas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rojo:#ed1f25;
+  --rojo-dark:#b01519;
+  --amarillo:#faec00;
+  --naranja:#f6a419;
+  --negro:#110500;
+  --negro2:#1e0800;
+  --crema:#fff8f0;
+  --ff-d:'Bangers',cursive;
+  --ff-h:'Oswald',sans-serif;
+  --ff-b:'Nunito',sans-serif;
+}
+*,*::before,*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--ff-b);
+  background:var(--negro);
+  color:#fff;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{text-decoration:none;}
+img{max-width:100%;display:block;}
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:200;
+  background:rgba(17,5,0,.97);
+  border-bottom:3px solid var(--rojo);
+  padding:10px 1.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  backdrop-filter:blur(10px);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo img{height:52px;width:52px;object-fit:contain;border-radius:4px;}
+.logo-text{font-family:var(--ff-d);font-size:1.5rem;color:var(--amarillo);letter-spacing:.05em;line-height:1;}
+.logo-sub{font-family:var(--ff-h);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.45);text-transform:uppercase;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.85);font-family:var(--ff-h);font-size:14px;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--amarillo);}
+.nav-cta{background:var(--rojo);color:#fff;border:none;padding:9px 20px;font-family:var(--ff-h);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:.2s;white-space:nowrap;}
+.nav-cta:hover{background:var(--rojo-dark);}
+.container{
+  max-width:900px;
+  margin:0 auto;
+  padding:100px 2rem 3rem;
+}
+.page-header{
+  text-align:center;
+  margin-bottom:3rem;
+  padding-bottom:2rem;
+  border-bottom:3px solid var(--rojo);
+}
+.page-header h1{
+  font-family:var(--ff-h);
+  font-size:2.5rem;
+  color:var(--rojo);
+  margin-bottom:0.5rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.page-header p{
+  color:#fff;
+  font-size:0.95rem;
+  letter-spacing:1px;
+}
+section{margin-bottom:2.5rem;}
+h2{
+  font-family:var(--ff-h);
+  font-size:1.8rem;
+  color:var(--rojo);
+  margin-bottom:1rem;
+  margin-top:2rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  border-left:4px solid var(--rojo);
+  padding-left:1rem;
+}
+h3{
+  font-family:var(--ff-h);
+  font-size:1.2rem;
+  color:#fff;
+  margin-bottom:0.8rem;
+  margin-top:1.5rem;
+  letter-spacing:0.5px;
+  font-weight:600;
+}
+p{
+  line-height:1.8;
+  color:#fff;
+  margin-bottom:1rem;
+  font-size:0.95rem;
+}
+ul,ol{
+  margin-left:1.5rem;
+  margin-bottom:1rem;
+}
+li{
+  line-height:1.8;
+  color:#fff;
+  margin-bottom:0.5rem;
+  font-size:0.95rem;
+}
+strong{
+  color:var(--rojo);
+  font-weight:700;
+}
+em{
+  color:var(--naranja);
+  font-style:italic;
+}
+.highlight-box{
+  background:rgba(237,31,37,0.08);
+  border-left:4px solid var(--rojo);
+  padding:1.5rem;
+  margin:1.5rem 0;
+  border-radius:0 4px 4px 0;
+}
+.info-box{
+  background:rgba(246,164,25,0.08);
+  border-left:4px solid var(--naranja);
+  padding:1.5rem;
+  margin:1.5rem 0;
+  border-radius:0 4px 4px 0;
+}
+footer{
+  background:#060100;
+  border-top:3px solid var(--rojo);
+  padding:2rem 1.5rem;
+  margin-top:3rem;
+  text-align:center;
+}
+.footer-text{
+  font-size:0.85rem;
+  color:rgba(255,255,255,.35);
+}
+.footer-link{
+  color:var(--amarillo);
+  transition:color .2s;
+}
+.footer-link:hover{
+  color:#fff;
+}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .container{padding:100px 1rem 2rem;}
+  .page-header h1{font-size:1.8rem;}
+  h2{font-size:1.4rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div>
+      <div class="logo-text">García's Pizzas</div>
+      <div class="logo-sub">Con el sello que nos caracteriza</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#inicio">Inicio</a></li>
+    <li><a href="index.html#menu">Menú</a></li>
+    <li><a href="index.html#empanadas">Empanadas</a></li>
+    <li><a href="index.html#combos">Combos</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="window.location.href='index.html#menu'">Pedir Ahora</button>
+</nav>
+
+<div class="container">
+
+<div class="page-header">
+  <h1>Aviso de Privacidad</h1>
+  <p>garciaspizzas.com</p>
+</div>
+
+<section>
+<h2>Información del Responsable</h2>
+<p>García's Pizzas con domicilio en <strong>Andrés Molina Enríquez 121, Colonia Centro, Jilotepec de Andrés Molina Enríquez, 54240 Jilotepec de Molina Enríquez, México</strong>, conforme a lo establecido en la Ley Federal de Protección de Datos en Posesión de Particulares, pone a disposición de nuestros clientes, proveedores, empleados y público en general, nuestro Aviso de Privacidad.</p>
+
+<p>Los datos personales que nos proporciona son utilizados estrictamente en la realización de funciones propias de nuestra empresa y por ningún motivo serán transferidos a terceros.</p>
+</section>
+
+<section>
+<h2>Datos que Recopilamos</h2>
+
+<h3>De Nuestros Clientes</h3>
+<p>Les solicitamos los siguientes datos personales:</p>
+<ul>
+<li>Nombre</li>
+<li>Teléfono</li>
+<li>Correo electrónico</li>
+<li>Domicilio</li>
+</ul>
+<p>Estos datos se utilizan para facilitar el proceso de contratación de nuestro servicio y/o compra de nuestros productos.</p>
+
+<h3>Datos Financieros</h3>
+<div class="info-box">
+<p>Datos como número de tarjeta de débito o crédito, nombre del titular, nombre de la institución bancaria, fecha de vencimiento y código de seguridad <strong>NO se almacenan en nuestros sistemas</strong>, ya que los procesa un tercero (Mercado Pago).</p>
+</div>
+
+<h3>De Nuestros Proveedores</h3>
+<p>Les solicitamos:</p>
+<ul>
+<li>Nombre</li>
+<li>Teléfono</li>
+<li>Correo electrónico</li>
+<li>Domicilio</li>
+</ul>
+
+<h3>De Nuestros Empleados</h3>
+<p>Les solicitamos:</p>
+<ul>
+<li>Nombre</li>
+<li>Teléfono</li>
+<li>Correo electrónico</li>
+<li>Domicilio</li>
+<li>Fecha y lugar de nacimiento</li>
+<li>Antecedentes laborales, puesto, sueldo y motivo de terminación laboral en los últimos cinco empleos</li>
+</ul>
+</section>
+
+<section>
+<h2>Finalidad de los Datos Personales</h2>
+<p>La finalidad de los datos personales recabados será utilizada para las siguientes finalidades:</p>
+
+<ul>
+<li><strong>a)</strong> Considerar las opiniones, quejas y/o sugerencias de nuestros consumidores</li>
+<li><strong>b)</strong> Valuar la calidad de todos nuestros servicios</li>
+<li><strong>c)</strong> Ejecutar la entrega de pedidos a domicilio, en caso de que las tiendas cuenten con la opción de servicio a domicilio</li>
+<li><strong>e)</strong> La información personal recopilada a través del Sitio Web será utilizada para verificar la identidad de los usuarios, así como con fines analíticos, estadísticos y de mercadotecnia; lo anterior con la única finalidad de prestarle un mejor servicio</li>
+<li><strong>f)</strong> Efectuar su Solicitud de Revocación de Consentimiento o Negativa a Finalidades Secundarias</li>
+<li><strong>g)</strong> Mostrarle al cliente promociones y descuentos (publicidad y mercadotecnia)</li>
+<li><strong>h)</strong> Contribuir en los estudios de la marca y productos</li>
+</ul>
+
+<p>El manifestar su negativa al tratamiento de sus datos personales para finalidades secundarias, no será motivo para dejar de brindarle nuestros servicios.</p>
+
+<p>Salvo en los casos antes señalados y los demás referidos en el artículo 37 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, su información personal no será transferida a terceros.</p>
+</section>
+
+<section>
+<h2>Derechos ARCO</h2>
+
+<p>Como titular de los datos personales recabados, tiene derecho a:</p>
+
+<h3>Acceso (A)</h3>
+<p>Conocer con qué información contamos y el uso y tratamiento que se le da a la misma.</p>
+
+<h3>Rectificación (R)</h3>
+<p>Solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta.</p>
+
+<h3>Cancelación (C)</h3>
+<p>Solicitar que eliminemos su información de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada conforme a los principios, deberes y obligaciones previstos en la normativa aplicable.</p>
+
+<h3>Oposición (O)</h3>
+<p>Oponerse al uso de sus datos personales para fines específicos.</p>
+
+<h3>Ejercer sus Derechos ARCO</h3>
+<p>Usted puede ejercer los derechos anteriormente mencionados a través del formulario <strong>"Solicitud para Atención a los Requerimientos ARCO"</strong>. Para esto deberá enviar un correo electrónico a:</p>
+<div class="highlight-box">
+<p><strong>Email:</strong> gustavogarciaaltmaraz1977@gmail.com</p>
+<p>Solicite el formulario correspondiente y siga el procedimiento que será enviado junto con su solicitud, en donde se atenderá cualquier duda respecto al tratamiento de su información y se dará trámite a las solicitudes para el ejercicio de estos derechos.</p>
+</div>
+</section>
+
+<section>
+<h2>Revocación de Consentimiento</h2>
+
+<p>Usted puede revocar el consentimiento que nos haya otorgado para el tratamiento de sus datos personales.</p>
+
+<p>Sin embargo, es importante que tenga en cuenta que no en todos los casos podremos atender su solicitud o concluir el uso de sus datos personales de forma inmediata, ya que es posible que por alguna obligación legal requiramos seguir tratando sus datos personales.</p>
+
+<p>Asimismo, debe considerar que para ciertos fines, la revocación de su consentimiento implicará que no podamos seguir brindándole el servicio que nos solicita.</p>
+
+<h3>Cómo Revocar su Consentimiento</h3>
+<p>Para solicitar la revocación de su consentimiento deberá enviar un correo a:</p>
+<div class="info-box">
+<p><strong>Email:</strong> gustavogarciaaltmaraz1977@gmail.com</p>
+<p>Solicitando el <strong>"Formato de Revocación del Consentimiento"</strong> y siga el procedimiento que será enviado junto con su solicitud. Nosotros analizaremos su caso y le enviaremos respuesta a su solicitud de acuerdo a nuestro procedimiento establecido.</p>
+</div>
+</section>
+
+<section>
+<h2>Restricciones del Uso o Difusión de Datos</h2>
+
+<p>Si desea limitar el uso o difusión de los datos personales que nos ha otorgado con fines de publicidad y/o mercadotecnia, envíenos un correo a:</p>
+<p><strong>gustavogarciaaltmaraz1977@gmail.com</strong></p>
+
+<p>O puede darse de baja automáticamente desde los correos que le enviaremos, haciendo clic en la parte <strong>"Remover suscripción"</strong> o <strong>"Unsubscribe"</strong>.</p>
+
+<p>Nos comprometemos a incluir su información en un Listado de Exclusión para suspender toda actividad relacionada con el ofrecimiento de servicios (publicidad y/o mercadotecnia) que pudiera recaer en actos de molestia respecto del uso de su información.</p>
+</section>
+
+<section>
+<h2>Tecnologías de Rastreo</h2>
+
+<h3>Cookies y Web Beacons</h3>
+<p>Le informamos que en nuestra página de Internet utilizamos <strong>cookies, web beacons</strong> y otras tecnologías a través de las cuales es posible monitorear su comportamiento como usuario de Internet, para brindarle un mejor servicio y experiencia al navegar en nuestra página, así como para ofrecerle nuevos productos y servicios basados en sus preferencias.</p>
+
+<h3>Datos Recopilados</h3>
+<p>Los datos personales que obtenemos de estas tecnologías de rastreo son los siguientes:</p>
+<ul>
+<li>Navegador utilizado</li>
+<li>Nombre del servidor</li>
+<li>Dirección IP</li>
+<li>Fecha, horario y tiempo de navegación en internet y en nuestro sitio</li>
+<li>Secciones consultadas</li>
+<li>Páginas de Internet accedidas cuando está en nuestro sitio web</li>
+</ul>
+
+<p>Para mayor información sobre el uso de estas tecnologías, puede consultar nuestra <strong>"Política de Sitio Web"</strong> que se encuentra en este mismo sitio de Internet.</p>
+</section>
+
+<section>
+<h2>Contacto - Departamento de Privacidad</h2>
+
+<p>En caso de que usted tenga alguna duda sobre este Aviso de Privacidad o del tratamiento que le estamos dando a sus Datos Personales, póngase en contacto con nuestro Departamento de Privacidad de Datos Personales, donde con gusto le atenderemos:</p>
+
+<div class="highlight-box">
+<p><strong>Domicilio:</strong> Andrés Molina Enríquez 121, Colonia Centro, Jilotepec de Andrés Molina Enríquez, 54240 Jilotepec de Molina Enríquez, Méx.</p>
+<p><strong>Correo Electrónico:</strong> gustavogarciaaltmaraz1977@gmail.com</p>
+</div>
+</section>
+
+<section>
+<h2>Actualización del Aviso de Privacidad</h2>
+
+<p>El presente Aviso de Privacidad podrá ser modificado o actualizado en cualquier momento.</p>
+
+<p>En caso de que se realice alguna modificación que requiera poner a su disposición un nuevo aviso, se le hará saber mediante correo electrónico a la cuenta de correo que se proporcionó inicialmente.</p>
+
+<p>En caso de ser solo una actualización, podrá consultarlo en nuestro portal de internet: <strong>garciaspizzas.com</strong></p>
+
+<p><strong>Fecha de actualización:</strong> Abril del año 2026</p>
+
+<p>En caso de realizar modificaciones al presente Aviso de Privacidad, le informaremos mediante correo electrónico, nuestro sitio web oficial, medios impresos y nuestros operadores telefónicos.</p>
+</section>
+
+</div>
+
+<footer>
+<p class="footer-text">García's Pizzas © 2024 | <a href="terminos.html" class="footer-link">Términos</a> • <a href="privacidad.html" class="footer-link">Privacidad</a></p>
+<p class="footer-text">Andres Molina Enriquez 121, Jilotepec, Edo. de México | Teléfono: (761) 688-1727</p>
+</footer>
+
+</body>
+</html>
