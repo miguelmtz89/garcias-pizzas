@@ -15,7 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Garcia's Pizzas","description":"Las mejores pizzas artesanales de Jilotepec, Estado de Mexico.","telephone":"(761) 688 1727","servesCuisine":["Pizza","Italiana","Mexicana"],"priceRange":"$","openingHours":"Mo-Su 11:00-21:00","address":{"@type":"PostalAddress","streetAddress":"Andres Molina Enriquez 121","addressLocality":"Jilotepec de Molina Enriquez","addressRegion":"Estado de Mexico","postalCode":"54240","addressCountry":"MX"},"sameAs":["https://www.facebook.com/garcias.pizzas","https://www.instagram.com/garcias_pizza_jilo/"]}
-
+</script>
+<script>
 /* ══════════════════════════════════════════════════════ */
 /* FUNCIONES PARA CANTIDAD DE EMPANADAS */
 /* ══════════════════════════════════════════════════════ */
@@ -67,14 +68,14 @@ function orderWithQty(btn) {
     var totalPrice = basePrice * qty;
 
     // Crear el mensaje para WhatsApp
-    var message = '🫓 Quiero pedir:\n' +
-                  'Empanada: ' + empanadaName + '\n' +
+    var message = '🫓 Su Orden es: Empanada: ' + empanadaName + '\n' +
                   'Cantidad: ' + qty + (qty === 1 ? ' unidad' : ' unidades') + '\n' +
                   'Precio: $' + totalPrice + '\n\n' +
                   '🛵 Delivery:\n' +
                   '  • 1 empanada → $30\n' +
-                  '  • 2 o más empanadas → Gratis\n\n' +
-                  '💳 ¿Forma de pago?: Efectivo, transferencia o tarjeta.\n\n' +
+                  '  • 2 o más empanadas → Envío es Gratis.\n\n' +
+                  '💳 ¿Cuál es su forma de pago? Efectivo, transferencia o tarjeta.\n\n' +
+                  'AGREGA LOS SIGUIENTES DATOS A SU PEDIDO. GRACIAS.\n\n' +
                   '👤 A nombre de quien queda tu pedido:\n\n' +
                   '📍 Envíanos tu ubicación normal para evitar errores en la entrega.';
     
@@ -94,6 +95,104 @@ function goToComboOrder() {
     setOrderType('combo');
     document.getElementById('purchaseForm').scrollIntoView({ behavior: 'smooth' });
 }
+
+/* ══════════════════════════════════════════════════════ */
+/* CAROUSEL DE ESPECIALIDADES */
+/* ══════════════════════════════════════════════════════ */
+var carouselImages = [
+    'pizza-1.webp', 'pizza-2.webp', 'pizza-3.webp', 'pizza-4.webp', 'pizza-5.webp',
+    'pizza-6.webp', 'pizza-7.webp', 'pizza-8.webp', 'pizza-9.webp', 'pizza-10.webp',
+    'pizza-11.webp', 'pizza-12.webp', 'pizza-13.webp', 'pizza-14.webp'
+];
+
+var carouselState = {
+    currentIndex: 0,
+    isPaused: false,
+    autoRotateInterval: null,
+    imagesPerView: 2
+};
+
+function initCarousel() {
+    var track = document.getElementById('carouselTrack');
+    var container = document.getElementById('specialtyCarousel');
+
+    if (!track || !container) return;
+
+    // Crear items - 2 imágenes a la vez
+    for (var i = 0; i < carouselImages.length; i++) {
+        var img = carouselImages[i];
+
+        var item = document.createElement('div');
+        item.className = 'carousel-item';
+
+        var imgEl = document.createElement('img');
+        imgEl.src = 'images/' + img;
+        imgEl.alt = 'Pizza Especialidad';
+        imgEl.onclick = function() {
+            goToSizeSection();
+        };
+
+        item.appendChild(imgEl);
+        track.appendChild(item);
+    }
+
+    // Iniciar rotación automática
+    startAutoRotate();
+}
+
+function goToSizeSection() {
+    var sizeRow = document.getElementById('sizeRow');
+    if (sizeRow) {
+        sizeRow.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+function startAutoRotate() {
+    if (carouselState.autoRotateInterval) clearInterval(carouselState.autoRotateInterval);
+
+    carouselState.autoRotateInterval = setInterval(function() {
+        if (!carouselState.isPaused) {
+            nextCarousel();
+        }
+    }, 5000);
+}
+
+function rotateCarousel() {
+    var track = document.getElementById('carouselTrack');
+    if (!track) return;
+
+    var offset = (carouselState.currentIndex * 100) / carouselState.imagesPerView;
+    track.style.transform = 'translateX(-' + offset + '%)';
+}
+
+function prevCarousel() {
+    carouselState.currentIndex--;
+    if (carouselState.currentIndex < 0) {
+        carouselState.currentIndex = carouselImages.length - carouselState.imagesPerView;
+    }
+    rotateCarousel();
+}
+
+function nextCarousel() {
+    carouselState.currentIndex++;
+    if (carouselState.currentIndex > carouselImages.length - carouselState.imagesPerView) {
+        carouselState.currentIndex = 0;
+    }
+    rotateCarousel();
+}
+
+function pauseCarousel() {
+    carouselState.isPaused = true;
+}
+
+function resumeCarousel() {
+    carouselState.isPaused = false;
+}
+
+// Inicializar carousel cuando carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    initCarousel();
+});
 
 </script>
 <style>
@@ -236,8 +335,8 @@ section{padding:4.5rem 1.5rem;}
 .map-in{max-width:1100px;margin:0 auto;}
 .map-sub{font-family:var(--ff-h);font-size:14px;color:rgba(255,255,255,.45);letter-spacing:1px;margin-bottom:2rem;}
 .map-grid{display:grid;grid-template-columns:1fr 340px;gap:2rem;align-items:stretch;}
-.mfw{border-radius:16px;overflow:hidden;border:3px solid rgba(237,31,37,.35);position:relative;min-height:420px;}
-.mfw iframe{display:block;width:100%;height:100%;min-height:420px;border:0;}
+.mfw{border-radius:16px;overflow:hidden;border:3px solid rgba(237,31,37,.35);position:relative;min-height:294px;}
+.mfw iframe{display:block;width:100%;height:100%;min-height:294px;border:0;}
 .minfo{display:flex;flex-direction:column;gap:.9rem;}
 .mic{background:rgba(255,255,255,.04);border:1px solid rgba(237,31,37,.2);border-left:4px solid var(--rojo);border-radius:0 10px 10px 0;padding:1rem 1.2rem;transition:.2s;}
 .mic:hover{background:rgba(237,31,37,.06);}
@@ -573,7 +672,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
   .ib h3 { font-size: 14px; }
   
   .map-grid { grid-template-columns: 1fr; }
-  .mfw { min-height: 300px; }
+  .mfw { min-height: 210px; }
 }
 
 /* ══════════════════════════════════════════════════════ */
@@ -582,6 +681,138 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
 @media (max-height: 500px) and (max-width: 900px) {
   .hero { min-height: 40vh; }
   section { padding: 1rem 0.5rem; }
+}
+
+/* ══════════════════════════════════════════════════════ */
+/* CAROUSEL DE ESPECIALIDADES */
+/* ══════════════════════════════════════════════════════ */
+.spec-carousel-bg {
+  background: linear-gradient(135deg, rgba(17,5,0,0.95) 0%, rgba(30,8,0,0.95) 100%);
+  padding: 3rem 1.5rem;
+  border-top: 3px solid var(--rojo);
+  border-bottom: 3px solid var(--rojo);
+}
+
+.spec-carousel-bg .sl {
+  color: var(--naranja);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.spec-carousel-bg .st {
+  color: #fff;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+.spec-carousel-bg .st span {
+  color: var(--rojo);
+}
+
+.carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  background: #000;
+  position: relative;
+  cursor: pointer;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex !important;
+  width: auto;
+  height: 100%;
+  flex-shrink: 0;
+  transition: transform 0.8s ease-in-out;
+}
+
+.carousel-item {
+  flex: 0 0 calc(100% / 2);
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:hover {
+  transform: scale(1.02);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(237, 31, 37, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.carousel-nav-btn:hover {
+  background: rgba(237, 31, 37, 1);
+}
+
+.carousel-nav-btn.prev {
+  left: 15px;
+}
+
+.carousel-nav-btn.next {
+  right: 15px;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 320px;
+  }
+
+  .carousel-item {
+    flex: 0 0 100%;
+    height: 320px;
+  }
+
+  .carousel-inner {
+    height: 320px;
+  }
+
+  .carousel-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .spec-carousel-bg .st {
+    font-size: 1.6rem;
+  }
 }
 
 </style>
@@ -595,7 +826,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
   </div>
   <ul class="nav-links">
     <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#menu">Menu</a></li>
+    <li><a href="#nuestras-especialidades">Menu</a></li>
     <li><a href="#empanadas">Empanadas</a></li>
     <li><a href="#combos">Combos</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -658,6 +889,26 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
   </div>
 </section>
 
+<!-- NUEVA SECCIÓN: SLIDE DE ESPECIALIDADES -->
+<section class="spec-carousel-bg" id="nuestras-especialidades">
+  <div class="si">
+    <p class="sl">Nuestras especialidades</p>
+    <h2 class="st">Conoce nuestras <span>Pizzas</span></h2>
+
+    <div class="carousel-container" id="specialtyCarousel" onmouseover="pauseCarousel()" onmouseout="resumeCarousel()">
+      <div class="carousel-inner">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Las imágenes se cargarán aquí con JavaScript -->
+        </div>
+      </div>
+      <button class="carousel-nav-btn prev" onclick="prevCarousel()">❮</button>
+      <button class="carousel-nav-btn next" onclick="nextCarousel()">❯</button>
+    </div>
+
+    <p style="text-align:center; color:#999; font-size:0.9rem; margin-top:1.5rem;">Haz clic en una pizza para ver tamaños y precios</p>
+  </div>
+</section>
+
 <section class="menu-bg" id="menu">
   <div class="si">
     <p class="ml">Nuestras especialidades</p>
@@ -688,6 +939,9 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 </div>
                 <div class="order-type-btn" onclick="setOrderType('combo')">
                   <span class="ot-icon">&#127881;</span>COMBOS
+                </div>
+                <div class="order-type-btn" onclick="document.getElementById('empanadas').scrollIntoView({behavior:'smooth'})">
+                  <span class="ot-icon">&#127838;</span>EMPANADAS
                 </div>
               </div>
             </div>
@@ -730,8 +984,66 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
               </div>
             </div>
             <div id="comboFlavorsArea" class="combo-flavors-area">
-              <label class="form-label">Elige los sabores de tus pizzas</label>
-              <div id="comboFlavorSelects"></div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label class="form-label">🍕 Pizza 1 — Selecciona Sabor</label>
+                <select class="form-select" id="pizza1Select" required onchange="updatePrice()">
+                  <option value="">-- Elige un sabor --</option>
+                  <option value="Pizza Pepperoni">Pepperoni</option>
+                  <option value="Pizza Margarita">Margarita</option>
+                  <option value="Pizza Hawaiana">Hawaiana</option>
+                  <option value="Pizza Hawaiana Especial">Hawaiana Especial</option>
+                  <option value="Pizza Mexicana">Mexicana</option>
+                  <option value="Pizza Charra">Charra</option>
+                  <option value="Pizza Carnes Mixtas">Carnes Mixtas</option>
+                  <option value="Pizza Casino">Casino</option>
+                  <option value="Pizza De la Casa">De la Casa</option>
+                  <option value="Pizza Jardinera">Jardinera</option>
+                  <option value="Pizza Cuatro Estaciones">Cuatro Estaciones</option>
+                  <option value="Pizza Mesa Luna">Mesa Luna</option>
+                  <option value="Pizza Tri Bambini">Tri Bambini</option>
+                  <option value="Pizza Crea tu Pizza">Crea tu Pizza</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label class="form-label">🍕 Pizza 2 — Selecciona Sabor</label>
+                <select class="form-select" id="pizza2Select" required onchange="updatePrice()">
+                  <option value="">-- Elige un sabor --</option>
+                  <option value="Pizza Pepperoni">Pepperoni</option>
+                  <option value="Pizza Margarita">Margarita</option>
+                  <option value="Pizza Hawaiana">Hawaiana</option>
+                  <option value="Pizza Hawaiana Especial">Hawaiana Especial</option>
+                  <option value="Pizza Mexicana">Mexicana</option>
+                  <option value="Pizza Charra">Charra</option>
+                  <option value="Pizza Carnes Mixtas">Carnes Mixtas</option>
+                  <option value="Pizza Casino">Casino</option>
+                  <option value="Pizza De la Casa">De la Casa</option>
+                  <option value="Pizza Jardinera">Jardinera</option>
+                  <option value="Pizza Cuatro Estaciones">Cuatro Estaciones</option>
+                  <option value="Pizza Mesa Luna">Mesa Luna</option>
+                  <option value="Pizza Tri Bambini">Tri Bambini</option>
+                  <option value="Pizza Crea tu Pizza">Crea tu Pizza</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">🍕 Pizza 3 — Selecciona Sabor</label>
+                <select class="form-select" id="pizza3Select" required onchange="updatePrice()">
+                  <option value="">-- Elige un sabor --</option>
+                  <option value="Pizza Pepperoni">Pepperoni</option>
+                  <option value="Pizza Margarita">Margarita</option>
+                  <option value="Pizza Hawaiana">Hawaiana</option>
+                  <option value="Pizza Hawaiana Especial">Hawaiana Especial</option>
+                  <option value="Pizza Mexicana">Mexicana</option>
+                  <option value="Pizza Charra">Charra</option>
+                  <option value="Pizza Carnes Mixtas">Carnes Mixtas</option>
+                  <option value="Pizza Casino">Casino</option>
+                  <option value="Pizza De la Casa">De la Casa</option>
+                  <option value="Pizza Jardinera">Jardinera</option>
+                  <option value="Pizza Cuatro Estaciones">Cuatro Estaciones</option>
+                  <option value="Pizza Mesa Luna">Mesa Luna</option>
+                  <option value="Pizza Tri Bambini">Tri Bambini</option>
+                  <option value="Pizza Crea tu Pizza">Crea tu Pizza</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -1022,7 +1334,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="pizza-card">
         <span class="pizza-tag">&#x1F449; ¡PRUEBA AHORA!</span>
         <div class="pizza-img-wrap">
-          <img src="images/image_10.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/empanada-1.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="pizza-body">
           <h3>Empanada Hawaiana</h3>
@@ -1045,7 +1357,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="pizza-card">
         <span class="pizza-tag">&#x1F449; ¡PRUEBA AHORA!</span>
         <div class="pizza-img-wrap">
-          <img src="images/image_09.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/empanada-2.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="pizza-body">
           <h3>Empanada Hawaiana Especial</h3>
@@ -1068,7 +1380,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="pizza-card">
         <span class="pizza-tag">&#x1F449; ¡PRUEBA AHORA!</span>
         <div class="pizza-img-wrap">
-          <img src="images/image_02.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/empanada-1.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="pizza-body">
           <h3>Empanada Jamón y Queso</h3>
@@ -1091,7 +1403,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="pizza-card">
         <span class="pizza-tag">&#x1F449; ¡PRUEBA AHORA!</span>
         <div class="pizza-img-wrap">
-          <img src="images/image_03.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/empanada-2.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="pizza-body">
           <h3>Empanada Chorizo y Queso</h3>
@@ -1114,7 +1426,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="pizza-card">
         <span class="pizza-tag">&#x1F449; ¡PRUEBA AHORA!</span>
         <div class="pizza-img-wrap">
-          <img src="images/image_02.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/empanada-1.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="pizza-body">
           <h3>Empanada Champiñón</h3>
@@ -1137,7 +1449,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="pizza-card">
         <span class="pizza-tag">&#x1F449; ¡PRUEBA AHORA!</span>
         <div class="pizza-img-wrap">
-          <img src="images/image_03.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/empanada-2.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="pizza-body">
           <h3>Empanada Carnes Mixtas</h3>
@@ -1160,7 +1472,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="pizza-card">
         <span class="pizza-tag" style="background:var(--naranja);">&#x2728; ¡TÚ DECIDES!</span>
         <div class="pizza-img-wrap">
-          <img src="images/image_02.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="images/empanada-1.webp" alt="Empanada Garcia's Pizzas" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="pizza-body">
           <h3>Empanada 4 Ingredientes</h3>
@@ -1195,12 +1507,12 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
 
     <p class="cn">Todos los dias excepto festivos y feriados &middot; Refresco Jarritos 2lt incluido &middot; Cambio a Coca-Cola pagando diferencia</p>
     <div class="combos-grid">
-      <div class="cc"><div class="cc-num">1</div><div class="ct">Combo 1</div><img src="images/image_11.webp" alt="Combo 1" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>1 Pizza Familiar (12 reb.)</li><li>1 Pizza Mediana (8 reb.)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$330 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc"><div class="cc-num">2</div><div class="ct">Combo 2</div><img src="images/image_12.webp" alt="Combo 2" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>1 Pizza Jumbo (16 reb.)</li><li>1 Pizza Mediana (8 reb.)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$350 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc hl"><div class="cc-num">3</div><div class="ct" style="color:var(--naranja)">Combo 3</div><img src="images/image_13.webp" alt="Combo 3" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>2 Pizzas Familiares (12 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--naranja)">$390 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc"><div class="cc-num">4</div><div class="ct">Combo 4</div><img src="images/image_14.webp" alt="Combo 4" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>2 Pizzas Jumbo (16 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$440 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc hl"><div class="cc-num">5</div><div class="ct" style="color:var(--amarillo)">Combo 5</div><img src="images/image_15.webp" alt="Combo 5" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>3 Pizzas Familiares (12 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--amarillo)">$580 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc"><div class="cc-num">6</div><div class="ct" style="color:var(--amarillo)">Combo 6</div><img src="images/image_16.webp" alt="Combo 6" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>3 Pizzas Jumbo (16 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--amarillo)">$580 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">Pedir este combo<
+      <div class="cc"><div class="cc-num">1</div><div class="ct">Combo 1</div><img src="images/combo-1.webp" alt="Combo 1" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>1 Pizza Familiar (12 reb.)</li><li>1 Pizza Mediana (8 reb.)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$330 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc"><div class="cc-num">2</div><div class="ct">Combo 2</div><img src="images/combo-2.webp" alt="Combo 2" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>1 Pizza Jumbo (16 reb.)</li><li>1 Pizza Mediana (8 reb.)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$350 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc hl"><div class="cc-num">3</div><div class="ct" style="color:var(--naranja)">Combo 3</div><img src="images/combo-3.webp" alt="Combo 3" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>2 Pizzas Familiares (12 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--naranja)">$390 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc"><div class="cc-num">4</div><div class="ct">Combo 4</div><img src="images/combo-4.webp" alt="Combo 4" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>2 Pizzas Jumbo (16 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$440 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc hl"><div class="cc-num">5</div><div class="ct" style="color:var(--amarillo)">Combo 5</div><img src="images/combo-5.webp" alt="Combo 5" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>3 Pizzas Familiares (12 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--amarillo)">$580 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc"><div class="cc-num">6</div><div class="ct" style="color:var(--amarillo)">Combo 6</div><img src="images/combo-6.webp" alt="Combo 6" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>3 Pizzas Jumbo (16 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--amarillo)">$580 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">Pedir este combo<
     </a></div>
     <div class="promo-banner" style="margin-top:2rem;">
       <div class="promo-banner-content">
@@ -1226,15 +1538,10 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
   <div class="si">
     <p class="sl">Encuentranos</p>
     <h2 class="st">Contacto &amp; <span>Horarios</span></h2>
-    <div style="margin:1.8rem 0 2rem;border-radius:16px;overflow:hidden;border:3px solid rgba(237,31,37,.3);box-shadow:0 8px 30px rgba(0,0,0,.4);position:relative;">
-      <img src="images/image_17.webp"
+    <div style="margin:1.8rem auto 2rem;border-radius:16px;overflow:hidden;border:3px solid rgba(237,31,37,.3);box-shadow:0 8px 30px rgba(0,0,0,.4);position:relative;max-width:50%;">
+      <img src="images/nueva ubicacion de garcias pizzas.webp"
            alt="Nueva ubicación Garcia's Pizzas — Jilotepec"
            style="width:100%;height:auto;display:block;">
-      <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(17,5,0,.85));padding:1rem 1.4rem;">
-        <p style="font-family:var(--ff-h);color:#fff;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin:0;">
-          &#128205; Nuestra Nueva Ubicación &mdash; Jilotepec, Mex.
-        </p>
-      </div>
     </div>
 
     <div class="ig">
@@ -1391,7 +1698,23 @@ function selectCombo(el, num, desc, price, flavors) {
     comboFlavorCount   = flavors;
     comboFlavors       = [];
 
-    buildFlavorSelects(flavors);
+    // Mostrar/ocultar Pizza 3 según el número de pizzas
+    var pizza3Group = document.querySelector('.form-group:has(#pizza3Select)');
+    var pizza3Select = document.getElementById('pizza3Select');
+
+    if (flavors === 3) {
+        // Combos 5 y 6: mostrar Pizza 3
+        if (pizza3Group) pizza3Group.style.display = 'block';
+        if (pizza3Select) pizza3Select.setAttribute('required', 'required');
+    } else {
+        // Combos 1-4: ocultar Pizza 3
+        if (pizza3Group) pizza3Group.style.display = 'none';
+        if (pizza3Select) {
+            pizza3Select.removeAttribute('required');
+            pizza3Select.value = '';
+        }
+    }
+
     document.getElementById('comboFlavorsArea').classList.add('visible');
     updatePrice();
 }
@@ -1483,7 +1806,7 @@ function resetCombo() {
     comboFlavors = [];
     document.querySelectorAll('.combo-card').forEach(function(c){ c.classList.remove('selected'); });
     document.getElementById('comboFlavorsArea').classList.remove('visible');
-    document.getElementById('comboFlavorSelects').innerHTML = '';
+    // Deshabilitado: document.getElementById('comboFlavorSelects').innerHTML = ''; - Ahora se usan los dropdowns del HTML
 }
 
 // ── Bebida de combo ────────────────────────────────────────
@@ -1523,9 +1846,18 @@ function updatePrice() {
             ? 'Combo ' + selectedComboNum + ' — ' + selectedComboDesc
             : 'No seleccionado';
 
-        var flavorTexts = comboFlavors.filter(function(f){ return f !== ''; });
-        document.getElementById('summarySabores').textContent = flavorTexts.length > 0
-            ? flavorTexts.join(', ')
+        // Leer sabores de los dropdowns en tiempo real
+        var pizza1 = document.getElementById('pizza1Select').value;
+        var pizza2 = document.getElementById('pizza2Select').value;
+        var pizza3 = document.getElementById('pizza3Select').value;
+
+        var currentFlavors = [];
+        if (pizza1) currentFlavors.push(pizza1);
+        if (pizza2) currentFlavors.push(pizza2);
+        if (pizza3 && comboFlavorCount === 3) currentFlavors.push(pizza3);
+
+        document.getElementById('summarySabores').textContent = currentFlavors.length > 0
+            ? currentFlavors.join(', ')
             : '—';
 
         document.getElementById('summaryPizza').textContent = '—';
@@ -1584,10 +1916,31 @@ function submitOrder(event) {
     var message = '';
 
     if (orderType === 'combo') {
+        // Capturar sabores de los dropdowns
+        var pizza1 = document.getElementById('pizza1Select').value;
+        var pizza2 = document.getElementById('pizza2Select').value;
+        var pizza3 = document.getElementById('pizza3Select').value;
+
         if (selectedComboNum === 0) {
             alert('Por favor selecciona un combo');
             return;
         }
+
+        // Verificar que se hayan seleccionado los sabores según el número de pizzas del combo
+        if (comboFlavorCount === 2) {
+            if (!pizza1 || !pizza2) {
+                alert('Por favor selecciona el sabor de las 2 pizzas en los dropdowns');
+                return;
+            }
+            comboFlavors = [pizza1, pizza2];
+        } else if (comboFlavorCount === 3) {
+            if (!pizza1 || !pizza2 || !pizza3) {
+                alert('Por favor selecciona el sabor de las 3 pizzas en los dropdowns');
+                return;
+            }
+            comboFlavors = [pizza1, pizza2, pizza3];
+        }
+
         var missingFlavors = comboFlavors.some(function(f){ return f === ''; });
         if (missingFlavors) {
             alert('Por favor selecciona el sabor de todas las pizzas del combo');
@@ -1660,6 +2013,10 @@ function submitOrder(event) {
 
     // Limpiar formulario
     document.getElementById('purchaseForm').reset();
+    // Resetear dropdowns de combos
+    if (document.getElementById('pizza1Select')) document.getElementById('pizza1Select').value = '';
+    if (document.getElementById('pizza2Select')) document.getElementById('pizza2Select').value = '';
+    if (document.getElementById('pizza3Select')) document.getElementById('pizza3Select').value = '';
     document.querySelectorAll('.pizza-option').forEach(function(el) {
         el.classList.remove('selected');
     });
@@ -1735,14 +2092,14 @@ function orderWithQty(btn) {
     var totalPrice = basePrice * qty;
 
     // Crear el mensaje para WhatsApp
-    var message = '🫓 Quiero pedir:\n' +
-                  'Empanada: ' + empanadaName + '\n' +
+    var message = '🫓 Su Orden es: Empanada: ' + empanadaName + '\n' +
                   'Cantidad: ' + qty + (qty === 1 ? ' unidad' : ' unidades') + '\n' +
                   'Precio: $' + totalPrice + '\n\n' +
                   '🛵 Delivery:\n' +
                   '  • 1 empanada → $30\n' +
-                  '  • 2 o más empanadas → Gratis\n\n' +
-                  '💳 ¿Forma de pago?: Efectivo, transferencia o tarjeta.\n\n' +
+                  '  • 2 o más empanadas → Envío es Gratis.\n\n' +
+                  '💳 ¿Cuál es su forma de pago? Efectivo, transferencia o tarjeta.\n\n' +
+                  'AGREGA LOS SIGUIENTES DATOS A SU PEDIDO. GRACIAS.\n\n' +
                   '👤 A nombre de quien queda tu pedido:\n\n' +
                   '📍 Envíanos tu ubicación normal para evitar errores en la entrega.';
     
