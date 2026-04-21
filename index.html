@@ -128,6 +128,7 @@ function initCarousel() {
         var imgEl = document.createElement('img');
         imgEl.src = 'images/' + img;
         imgEl.alt = 'Pizza Especialidad';
+        imgEl.loading = 'lazy';
         imgEl.onclick = function() {
             goToSizeSection();
         };
@@ -859,7 +860,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
 
 <nav>
   <div class="nav-logo">
-    <img src="images/image_00.webp" alt="Garcia's Pizzas">
+    <img src="images/image_00.webp" alt="Garcia's Pizzas" loading="lazy">
     <div><div class="logo-text">Garcia's Pizzas</div><div class="logo-sub">Jilotepec, Mex.</div></div>
   </div>
   <ul class="nav-links">
@@ -895,7 +896,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
     </div>
     <div class="hero-iw">
       <div class="hero-glow"></div>
-      <img src="images/image_01.png" alt="Pizza Pepperoni Garcia's" class="hero-pizza">
+      <img src="images/pizza-15.webp" alt="Pizza Pepperoni Garcia's" class="hero-pizza" loading="lazy">
     </div>
   </div>
 </section>
@@ -1140,7 +1141,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Pepperoni')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_02.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Pepperoni">
+                    <img src="images/image_02.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Pepperoni" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Pepperoni</div>
@@ -1150,7 +1151,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Margarita')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_03.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Margarita">
+                    <img src="images/image_03.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Margarita" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Margarita</div>
@@ -1160,7 +1161,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Mesa Luna')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_04.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Mesa Luna">
+                    <img src="images/image_04.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Mesa Luna" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Mesa Luna</div>
@@ -1170,7 +1171,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Hawaiana')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_05.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Hawaiana">
+                    <img src="images/image_05.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Hawaiana" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Hawaiana</div>
@@ -1180,7 +1181,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Hawaiana Especial')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_06.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Hawaiana Especial">
+                    <img src="images/image_06.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Hawaiana Especial" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Hawaiana Especial</div>
@@ -1190,7 +1191,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Carnes Mixtas')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_07.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Carnes Mixtas">
+                    <img src="images/image_07.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Carnes Mixtas" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Carnes Mixtas</div>
@@ -1200,7 +1201,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Casino')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_08.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Casino">
+                    <img src="images/image_08.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Casino" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Casino</div>
@@ -1210,7 +1211,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza De la Casa')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_09.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza De la Casa">
+                    <img src="images/image_09.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza De la Casa" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">De la Casa</div>
@@ -1220,7 +1221,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Charra')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_10.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Charra">
+                    <img src="images/image_10.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Charra" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Charra</div>
@@ -1230,7 +1231,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Mexicana')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_11.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Mexicana">
+                    <img src="images/image_11.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Mexicana" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Mexicana</div>
@@ -1240,7 +1241,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Cuatro Estaciones')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_12.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Cuatro Estaciones">
+                    <img src="images/image_12.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Cuatro Estaciones" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Cuatro Estaciones</div>
@@ -1250,7 +1251,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Jardinera')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image-30.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Jardinera">
+                    <img src="images/image-30.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Jardinera" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Jardinera</div>
@@ -1260,7 +1261,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Tri Bambini')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_13.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Tri Bambini">
+                    <img src="images/image_13.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Tri Bambini" loading="lazy">
                   </div>
                   <div class="pizza-option-name">Tri Bambini</div>
                   <p style="font-size:12px; color:#666; margin:5px 0; line-height:1.3;">Atún, champiñón y elote — la opción sorprendente y diferente del menú</p>
@@ -1268,7 +1269,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <div class="pizza-option" onclick="selectPizza(this, 'Pizza Crea tu Pizza')" style="position:relative;">
                     <div class="pizza-badge">👉 ¡PRUEBA AHORA!</div>
                   <div style="width:100%; height:160px; overflow:hidden; border-radius:8px 8px 0 0;">
-                    <img src="images/image_14.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Crea tu Pizza">
+                    <img src="images/image_14.webp" style="width:100%; height:100%; object-fit:cover;" alt="Pizza Crea tu Pizza" loading="lazy">
                   </div>
                   <div style="padding:10px;">
                     <div class="pizza-option-name">Crea tu Pizza</div>
@@ -1292,13 +1293,13 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 </div>
 
                 <div class="drink-card" id="dk-jarritos" onclick="selectDrink(this,45,'Jarritos 2L')">
-                  <img src="images/emoji jarritos.png" alt="Jarritos 2L">
+                  <img src="images/emoji jarritos.png" alt="Jarritos 2L" loading="lazy">
                   <div class="dk-name">Jarritos 2L</div>
                   <div class="dk-price">$45</div>
                 </div>
 
                 <div class="drink-card" id="dk-coca" onclick="selectDrink(this,65,'Coca-Cola 3L')">
-                  <img src="images/emoji de refresco.png" alt="Coca-Cola 3L">
+                  <img src="images/emoji de refresco.png" alt="Coca-Cola 3L" loading="lazy">
                   <div class="dk-name">Coca-Cola 3L</div>
                   <div class="dk-price">$65</div>
                 </div>
@@ -1395,7 +1396,8 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
         <div class="modal-pizza-animated">🍕</div>
       </div>
       <div class="modal-message">Tu pedido se ha hecho</div>
-      <div class="modal-message-small">Redirigiendo a WhatsApp en 3 segundos...</div>
+      <div class="modal-message-small">Abriendo WhatsApp...</div>
+      <button type="button" class="btn-close-modal" onclick="closeConfirmationModal()">Cerrar</button>
     </div>
   </div>
 </section>
@@ -1590,12 +1592,12 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
 
     <p class="cn">Todos los dias excepto festivos y feriados &middot; Refresco Jarritos 2lt incluido &middot; Cambio a Coca-Cola pagando diferencia</p>
     <div class="combos-grid">
-      <div class="cc"><div class="cc-num">1</div><div class="ct">Combo 1</div><img src="images/combo-1.webp" alt="Combo 1" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>1 Pizza Familiar (12 reb.)</li><li>1 Pizza Mediana (8 reb.)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$330 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc"><div class="cc-num">2</div><div class="ct">Combo 2</div><img src="images/combo-2.webp" alt="Combo 2" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>1 Pizza Jumbo (16 reb.)</li><li>1 Pizza Mediana (8 reb.)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$350 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc hl"><div class="cc-num">3</div><div class="ct" style="color:var(--naranja)">Combo 3</div><img src="images/combo-3.webp" alt="Combo 3" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>2 Pizzas Familiares (12 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--naranja)">$390 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc"><div class="cc-num">4</div><div class="ct">Combo 4</div><img src="images/combo-4.webp" alt="Combo 4" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>2 Pizzas Jumbo (16 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$440 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc hl"><div class="cc-num">5</div><div class="ct" style="color:var(--amarillo)">Combo 5</div><img src="images/combo-5.webp" alt="Combo 5" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>3 Pizzas Familiares (12 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--amarillo)">$580 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
-      <div class="cc"><div class="cc-num">6</div><div class="ct" style="color:var(--amarillo)">Combo 6</div><img src="images/combo-6.webp" alt="Combo 6" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;"><ul class="ci"><li>3 Pizzas Jumbo (16 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--amarillo)">$580 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">Pedir este combo<
+      <div class="cc"><div class="cc-num">1</div><div class="ct">Combo 1</div><img src="images/combo-1.webp" alt="Combo 1" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;" loading="lazy"><ul class="ci"><li>1 Pizza Familiar (12 reb.)</li><li>1 Pizza Mediana (8 reb.)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$330 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc"><div class="cc-num">2</div><div class="ct">Combo 2</div><img src="images/combo-2.webp" alt="Combo 2" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;" loading="lazy"><ul class="ci"><li>1 Pizza Jumbo (16 reb.)</li><li>1 Pizza Mediana (8 reb.)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$350 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc hl"><div class="cc-num">3</div><div class="ct" style="color:var(--naranja)">Combo 3</div><img src="images/combo-3.webp" alt="Combo 3" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;" loading="lazy"><ul class="ci"><li>2 Pizzas Familiares (12 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--naranja)">$390 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc"><div class="cc-num">4</div><div class="ct">Combo 4</div><img src="images/combo-4.webp" alt="Combo 4" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;" loading="lazy"><ul class="ci"><li>2 Pizzas Jumbo (16 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp">$440 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc hl"><div class="cc-num">5</div><div class="ct" style="color:var(--amarillo)">Combo 5</div><img src="images/combo-5.webp" alt="Combo 5" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;" loading="lazy"><ul class="ci"><li>3 Pizzas Familiares (12 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--amarillo)">$580 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">🍕 Pedir este combo</a></div>
+      <div class="cc"><div class="cc-num">6</div><div class="ct" style="color:var(--amarillo)">Combo 6</div><img src="images/combo-6.webp" alt="Combo 6" style="width:100%;max-height:180px;object-fit:contain;margin:0.6rem 0;border-radius:8px;" loading="lazy"><ul class="ci"><li>3 Pizzas Jumbo (16 reb. c/u)</li><li class="gift">+ Refresco Jarritos 2lt &#127129;</li></ul><div class="cp" style="color:var(--amarillo)">$580 <small>pesos</small></div><a href="javascript:void(0)" onclick="goToComboOrder()" class="btn-wa" style="margin-top:1.2rem;">Pedir este combo<
     </a></div>
     <div class="promo-banner" style="margin-top:2rem;">
       <div class="promo-banner-content">
@@ -1624,7 +1626,8 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
     <div style="margin:1.8rem auto 2rem;border-radius:16px;overflow:hidden;border:3px solid rgba(237,31,37,.3);box-shadow:0 8px 30px rgba(0,0,0,.4);position:relative;max-width:50%;">
       <img src="images/nueva ubicacion de garcias pizzas.webp"
            alt="Nueva ubicación Garcia's Pizzas — Jilotepec"
-           style="width:100%;height:auto;display:block;">
+           style="width:100%;height:auto;display:block;"
+           loading="lazy">
     </div>
 
     <div class="ig">
@@ -1632,7 +1635,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="ib"><h3>&#128172; WhatsApp</h3><a href="https://wa.me/5215659941905" target="_blank" rel="noopener">56 5994 1905</a><small>Pedidos rapidos por mensaje</small></div>
       <div class="ib"><h3>&#128205; Direccion</h3><p>Andres Molina Enriquez 121</p><small>Col. Centro &middot; Jilotepec de Molina Enriquez, Estado de Mexico &middot; CP 54240</small></div>
       <div class="ib"><h3>&#9200; Horarios</h3><div class="hr"><span>Lunes a Domingo</span><span>11:00 am &ndash; 9:00 pm</span></div><div class="hr"><span>Dias Festivos</span><span class="w">&#9888; Sin combos</span></div></div>
-      <div class="ib"><h3>&#128242; Siguenos</h3><div class="sr"><a href="https://www.facebook.com/garcias.pizzas" target="_blank" rel="noopener" class="sb" aria-label="Facebook"><img src="images/facebook-logo.png" alt="Facebook"></a><a href="https://www.instagram.com/garcias_pizza_jilo/" target="_blank" rel="noopener" class="sb" aria-label="Instagram"><img src="images/instagram-logo.png" alt="Instagram"></a></div><small>Promociones y novedades en redes</small></div>
+      <div class="ib"><h3>&#128242; Siguenos</h3><div class="sr"><a href="https://www.facebook.com/garcias.pizzas" target="_blank" rel="noopener" class="sb" aria-label="Facebook"><img src="images/facebook-logo.png" alt="Facebook" loading="lazy"></a><a href="https://www.instagram.com/garcias_pizza_jilo/" target="_blank" rel="noopener" class="sb" aria-label="Instagram"><img src="images/instagram-logo.png" alt="Instagram" loading="lazy"></a></div><small>Promociones y novedades en redes</small></div>
       <div class="ib"><h3>&#128757; Zona de Delivery</h3><p>Centro de Jilotepec</p><small>Sin costo extra a partir de $120 &middot; Max. 6 km &middot; A mayor distancia, mayor consumo requerido</small></div>
     </div>
   </div>
@@ -1832,6 +1835,7 @@ function buildFlavorSelects(count) {
             
             var img = document.createElement('img');
             img.src = getPizzaImage(pizzaFlavors[j]);
+            img.loading = 'lazy';
             imgDiv.appendChild(img);
             
             var content = document.createElement('div');
@@ -2097,6 +2101,9 @@ function submitOrder(event) {
 
     var whatsappLink = 'https://wa.me/5215659941905?text=' + encodeURIComponent(message);
 
+    // Marcar Paso 6 como activo en la barra de progreso
+    updateProgressBar();
+
     // Mostrar modal animado
     showConfirmationModal();
 
@@ -2105,10 +2112,10 @@ function submitOrder(event) {
         window.open(whatsappLink, '_blank');
     }, 500);
 
-    // Cerrar modal después de que se abre WhatsApp
+    // Cerrar modal automáticamente después de 5 segundos
     setTimeout(function() {
         closeConfirmationModal();
-    }, 3500);
+    }, 5000);
 
     // Limpiar formulario
     document.getElementById('purchaseForm').reset();
@@ -2229,7 +2236,6 @@ function nextStep(stepNumber) {
     // Validar si el paso actual tiene datos requeridos
     if (currentStep === 1) {
         // Paso 1 no necesita validación, es solo la selección tipo
-        currentStep = stepNumber;
     } else if (currentStep === 2) {
         // Validar tamaño para pizzas
         if (orderType === 'pizza') {
@@ -2245,7 +2251,6 @@ function nextStep(stepNumber) {
                 return;
             }
         }
-        currentStep = stepNumber;
     } else if (currentStep === 3) {
         // Validar sabor
         if (orderType === 'pizza') {
@@ -2272,10 +2277,8 @@ function nextStep(stepNumber) {
                 }
             }
         }
-        currentStep = stepNumber;
     } else if (currentStep === 4) {
         // Bebida - no requiere validación obligatoria
-        currentStep = stepNumber;
     } else if (currentStep === 5) {
         // Validar nombre y teléfono
         var name = document.getElementById('nameInput').value;
@@ -2284,7 +2287,6 @@ function nextStep(stepNumber) {
             alert('Por favor completa tu nombre y teléfono');
             return;
         }
-        currentStep = stepNumber;
     } else if (currentStep === 6) {
         // Última validación antes de confirmar
         var address = document.getElementById('addressInput').value;
@@ -2292,11 +2294,26 @@ function nextStep(stepNumber) {
             alert('Por favor completa tu dirección de envío');
             return;
         }
-        currentStep = stepNumber;
     }
 
+    // Actualizar barra de progreso ANTES de cambiar currentStep
+    // Así marca el paso actual como activo, no el siguiente
     updateProgressBar();
-    scrollToNextSection(stepNumber);
+
+    // Para Paso 3, agregar pequeño delay antes de cambiar currentStep
+    // Esto asegura que la barra se actualice con currentStep = 3
+    if (currentStep === 3) {
+        setTimeout(function() {
+            currentStep = stepNumber;
+            scrollToNextSection(stepNumber);
+        }, 100);
+    } else {
+        // AHORA cambiar al siguiente paso
+        currentStep = stepNumber;
+
+        // Scrollear al siguiente paso
+        scrollToNextSection(stepNumber);
+    }
 }
 
 function scrollToNextSection(stepNumber) {
