@@ -1276,7 +1276,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                                       </div>
                 </div>
               </div>
-              <button type="button" class="btn-siguiente" onclick="nextStep(3)">Siguiente</button>
+              <button type="button" class="btn-siguiente" onclick="nextStep(4)">Siguiente</button>
             </div>
           </div>
 
@@ -2096,7 +2096,19 @@ function submitOrder(event) {
     }
 
     var whatsappLink = 'https://wa.me/5215659941905?text=' + encodeURIComponent(message);
-    window.open(whatsappLink, '_blank');
+
+    // Mostrar modal animado
+    showConfirmationModal();
+
+    // Abrir WhatsApp después de mostrar el modal
+    setTimeout(function() {
+        window.open(whatsappLink, '_blank');
+    }, 500);
+
+    // Cerrar modal después de que se abre WhatsApp
+    setTimeout(function() {
+        closeConfirmationModal();
+    }, 3500);
 
     // Limpiar formulario
     document.getElementById('purchaseForm').reset();
