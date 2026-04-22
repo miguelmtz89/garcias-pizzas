@@ -1346,7 +1346,8 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
 
           <div class="form-row full">
             <div class="form-group">
-              <label class="form-label">Dirección de Envío</label>
+              <label class="form-label">DIRECCIÓN DE ENVÍO, CONSUMO EN EL LOCAL O PASA A RECOGER SU PEDIDO</label>
+              <p style="font-size: 13px; color: #666; margin: 5px 0 10px 0; font-weight: 400;">(Agrega tu dirección si va ser para llevar a domicilio e incluye referencia o si va ser consumo en el local déjanos saber).</p>
               <input type="text" class="form-input" id="addressInput" placeholder="Calle, número, referencias" required>
             </div>
             <button type="button" class="btn-siguiente" onclick="nextStepDirection()">Siguiente</button>
@@ -2340,7 +2341,8 @@ function nextStepCombo(stepNumber) {
     // Actualizar barra de progreso DESPUÉS
     updateProgressBar();
 
-    // NO hacer scroll para combos
+    // Scrollear al siguiente paso
+    scrollToNextSection(stepNumber);
 }
 
 // Función dinámica para el botón de Dirección (funciona para ambos flujos)
@@ -2361,30 +2363,34 @@ function scrollToNextSection(stepNumber) {
         if (orderType === 'pizza') {
             elementToScroll = document.getElementById('sizeRow');
         } else {
-            elementToScroll = document.getElementById('comboSelectArea');
+            elementToScroll = document.getElementById('comboFlavorsArea');
         }
     } else if (stepNumber === 3) {
         // Scroll a selección de sabor
         if (orderType === 'pizza') {
             elementToScroll = document.getElementById('pizzaFlavorRow');
         } else {
-            elementToScroll = document.getElementById('comboFlavorsArea');
+            elementToScroll = document.getElementById('drinkRowCombo');
         }
     } else if (stepNumber === 4) {
         // Scroll a selección de bebida
         if (orderType === 'pizza') {
             elementToScroll = document.getElementById('drinkRowPizza');
         } else {
-            elementToScroll = document.getElementById('drinkRowCombo');
+            elementToScroll = document.getElementById('nameInput');
         }
     } else if (stepNumber === 5) {
         // Scroll a datos de envío (nombre, teléfono, dirección)
-        var nameInput = document.getElementById('nameInput');
-        if (nameInput) {
-            elementToScroll = nameInput.closest('form');
-            if (!elementToScroll) {
-                elementToScroll = nameInput;
+        if (orderType === 'pizza') {
+            var nameInput = document.getElementById('nameInput');
+            if (nameInput) {
+                elementToScroll = nameInput.closest('form');
+                if (!elementToScroll) {
+                    elementToScroll = nameInput;
+                }
             }
+        } else {
+            elementToScroll = document.getElementById('orderSummary');
         }
     } else if (stepNumber === 6) {
         // Scroll a resumen y botón confirmar
