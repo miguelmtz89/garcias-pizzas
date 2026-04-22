@@ -445,7 +445,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
 .order-type-selector{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.2rem;}
 .order-type-btn{border:2px solid #ddd;border-radius:8px;padding:1rem;text-align:center;cursor:pointer;transition:.3s;background:#f9f9f9;font-family:var(--ff-h);font-size:15px;font-weight:700;color:var(--negro);text-transform:uppercase;letter-spacing:1px;}
 .order-type-btn:hover{border-color:var(--rojo);background:#fff0f0;}
-.order-type-btn.active{border-color:var(--rojo);background:rgba(237,31,37,0.1);box-shadow:0 0 12px rgba(237,31,37,0.3);color:var(--rojo);}
+.order-type-btn.active{border-color:var(--rojo);background:#ED1F25;box-shadow:0 0 12px rgba(237,31,37,0.3);color:#fff;}
 .order-type-btn .ot-icon{font-size:28px;display:block;margin-bottom:6px;}
 .combo-select-area{display:none;margin-top:1rem;}
 .combo-select-area.visible{display:block;}
@@ -1132,7 +1132,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <option value="jumbo|240">Jumbo (16 rebanadas) - $240</option>
               </select>
             </div>
-            <button type="button" class="btn-siguiente" onclick="nextStep(3)">Siguiente</button>
+            <button type="button" class="btn-siguiente" onclick="nextStep(2)">Siguiente</button>
           </div>
 
           <div class="form-row full" id="pizzaFlavorRow">
@@ -1278,7 +1278,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                                       </div>
                 </div>
               </div>
-              <button type="button" class="btn-siguiente" onclick="nextStep(4)">Siguiente</button>
+              <button type="button" class="btn-siguiente" onclick="nextStep(3)">Siguiente</button>
             </div>
           </div>
 
@@ -1306,7 +1306,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 </div>
 
               </div>
-              <button type="button" class="btn-siguiente" onclick="nextStep(5)">Siguiente</button>
+              <button type="button" class="btn-siguiente" onclick="nextStep(4)">Siguiente</button>
             </div>
           </div>
 
@@ -1397,8 +1397,8 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="modal-pizza-container">
         <div class="modal-pizza-animated">🍕</div>
       </div>
-      <div class="modal-message">Tu pedido se ha hecho</div>
-      <div class="modal-message-small">Abriendo WhatsApp...</div>
+      <div class="modal-message">Para confirmar verifique su pedido en su WhatsApp, Tu pedido se esta dirigiendo a Whatsapp. ¡Revise su Orden por Favor!.</div>
+      <div class="modal-message-small">👉¡Espera Respuesta Vía WhatsApp!</div>
       <button type="button" class="btn-close-modal" onclick="closeConfirmationModal()">Cerrar</button>
     </div>
   </div>
@@ -2104,6 +2104,7 @@ function submitOrder(event) {
     var whatsappLink = 'https://wa.me/5215659941905?text=' + encodeURIComponent(message);
 
     // Marcar Paso 6 como activo en la barra de progreso
+    currentStep = 6;
     updateProgressBar();
 
     // Mostrar modal animado
@@ -2299,11 +2300,11 @@ function nextStep(stepNumber) {
         }
     }
 
-    // Marcar el paso actual como activo ANTES de cambiar currentStep
-    updateProgressBar();
-
-    // Cambiar al siguiente paso
+    // Cambiar al siguiente paso PRIMERO
     currentStep = stepNumber;
+
+    // Marcar el paso actual como activo DESPUÉS de cambiar currentStep
+    updateProgressBar();
 
     // Scrollear al siguiente paso
     scrollToNextSection(stepNumber);
