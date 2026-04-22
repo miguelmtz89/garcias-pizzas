@@ -91,12 +91,6 @@ function orderWithQty(btn) {
 }
 
 
-/* Nueva función para redirigir a combo desde la sección de combos */
-function goToComboOrder() {
-    setOrderType('combo');
-    document.getElementById('purchaseForm').scrollIntoView({ behavior: 'smooth' });
-}
-
 /* ══════════════════════════════════════════════════════ */
 /* CAROUSEL DE ESPECIALIDADES */
 /* ══════════════════════════════════════════════════════ */
@@ -1729,7 +1723,10 @@ var pizzaImages = {
 function setOrderType(type) {
     orderType = type;
     document.querySelectorAll('.order-type-btn').forEach(function(b){ b.classList.remove('active'); });
-    event.currentTarget.classList.add('active');
+    document.querySelectorAll('.order-type-btn').forEach(function(b){
+        var oc = b.getAttribute('onclick') || '';
+        if (oc.indexOf("'" + type + "'") !== -1) { b.classList.add('active'); }
+    });
 
     var comboArea     = document.getElementById('comboSelectArea');
     var sizeRow       = document.getElementById('sizeRow');
@@ -2362,37 +2359,31 @@ function scrollToNextSection(stepNumber) {
     if (stepNumber === 2) {
         // Scroll a selección de tamaño/combo
         if (orderType === 'pizza') {
-            elementToScroll = document.getElementById('sizeRow');
+            elementToScroll = document.getElementById('pizzaFlavorRow');
         } else {
             elementToScroll = document.getElementById('comboFlavorsArea');
         }
     } else if (stepNumber === 3) {
-        // Scroll a selección de sabor
+        // Scroll a selección de sabor → bebida
         if (orderType === 'pizza') {
-            elementToScroll = document.getElementById('pizzaFlavorRow');
+            elementToScroll = document.getElementById('drinkRowPizza');
         } else {
             elementToScroll = document.getElementById('drinkRowCombo');
         }
     } else if (stepNumber === 4) {
-        // Scroll a selección de bebida
-        if (orderType === 'pizza') {
-            elementToScroll = document.getElementById('drinkRowPizza');
-        } else {
-            elementToScroll = document.getElementById('nameInput');
-        }
-    } else if (stepNumber === 5) {
-        // Scroll a datos de envío (nombre, teléfono, dirección)
+        // Scroll a datos de envío
         if (orderType === 'pizza') {
             var nameInput = document.getElementById('nameInput');
             if (nameInput) {
                 elementToScroll = nameInput.closest('form');
-                if (!elementToScroll) {
-                    elementToScroll = nameInput;
-                }
+                if (!elementToScroll) { elementToScroll = nameInput; }
             }
         } else {
-            elementToScroll = document.getElementById('orderSummary');
+            elementToScroll = document.getElementById('nameInput');
         }
+    } else if (stepNumber === 5) {
+        // Scroll a resumen del pedido
+        elementToScroll = document.getElementById('orderSummary');
     } else if (stepNumber === 6) {
         // Scroll a resumen y botón confirmar
         elementToScroll = document.getElementById('orderSummary');
