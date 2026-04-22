@@ -77,7 +77,8 @@ function orderWithQty(btn) {
                   '💳 ¿Cuál es su forma de pago? Efectivo, transferencia o tarjeta.\n\n' +
                   'AGREGA LOS SIGUIENTES DATOS A SU PEDIDO. GRACIAS.\n\n' +
                   '👤 A nombre de quien queda tu pedido:\n\n' +
-                  '📍 Envíanos tu ubicación normal para evitar errores en la entrega.';
+                  '📍 Envíanos tu ubicación normal para evitar errores en la entrega.\n\n' +
+                  'Si deseas agregar otra empanada a tu orden dime aqui.';
     
     // Codificar el mensaje
     var encodedMessage = encodeURIComponent(message);
@@ -1021,37 +1022,37 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
               <div class="combo-cards">
                 <div class="combo-card" onclick="selectCombo(this,1,'1 Familiar + 1 Mediana',330,2)">
                   <div class="combo-card-num">Combo 1</div>
-                  <div class="combo-card-desc">1 Familiar (12 reb.)<br>1 Mediana (8 reb.)</div>
+                  <div class="combo-card-desc">1 Familiar (12 reb.)<br>1 Mediana (8 reb.), Refresco de 2L Jarritos</div>
                   <div class="combo-card-price">$330</div>
                 </div>
                 <div class="combo-card" onclick="selectCombo(this,2,'1 Jumbo + 1 Mediana',350,2)">
                   <div class="combo-card-num">Combo 2</div>
-                  <div class="combo-card-desc">1 Jumbo (16 reb.)<br>1 Mediana (8 reb.)</div>
+                  <div class="combo-card-desc">1 Jumbo (16 reb.)<br>1 Mediana (8 reb.), Refresco de 2L Jarritos</div>
                   <div class="combo-card-price">$350</div>
                 </div>
                 <div class="combo-card" onclick="selectCombo(this,3,'2 Familiares (12 reb. c/u)',390,2)">
                   <div class="combo-card-num">Combo 3</div>
-                  <div class="combo-card-desc">2 Familiares<br>(12 reb. c/u)</div>
+                  <div class="combo-card-desc">2 Familiares<br>(12 reb. c/u), Refresco de 2L Jarritos</div>
                   <div class="combo-card-price">$390</div>
                 </div>
                 <div class="combo-card" onclick="selectCombo(this,4,'2 Jumbos (16 reb. c/u)',440,2)">
                   <div class="combo-card-num">Combo 4</div>
-                  <div class="combo-card-desc">2 Jumbos<br>(16 reb. c/u)</div>
+                  <div class="combo-card-desc">2 Jumbos<br>(16 reb. c/u), Refresco de 2L Jarritos</div>
                   <div class="combo-card-price">$440</div>
                 </div>
                 <div class="combo-card" onclick="selectCombo(this,5,'3 Familiares (12 reb. c/u)',580,3)">
                   <div class="combo-card-num">Combo 5</div>
-                  <div class="combo-card-desc">3 Familiares<br>(12 reb. c/u)</div>
+                  <div class="combo-card-desc">3 Familiares<br>(12 reb. c/u), Refresco de 2L Jarritos</div>
                   <div class="combo-card-price">$580</div>
                 </div>
                 <div class="combo-card" onclick="selectCombo(this,6,'3 Jumbos (16 reb. c/u)',580,3)">
                   <div class="combo-card-num">Combo 6</div>
-                  <div class="combo-card-desc">3 Jumbos<br>(16 reb. c/u)</div>
+                  <div class="combo-card-desc">3 Jumbos<br>(16 reb. c/u), Refresco de 2L Jarritos</div>
                   <div class="combo-card-price">$580</div>
                 </div>
               </div>
             </div>
-              <button type="button" class="btn-siguiente" onclick="nextStep(3)">Siguiente</button>
+              <button type="button" class="btn-siguiente" onclick="nextStepCombo(2)">Siguiente</button>
             </div>
             <div id="comboFlavorsArea" class="combo-flavors-area">
               <div class="form-group" style="margin-bottom:1rem;">
@@ -1114,7 +1115,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                   <option value="Pizza Crea tu Pizza">Crea tu Pizza</option>
                 </select>
               </div>
-              <button type="button" class="btn-siguiente" onclick="nextStep(4)">Siguiente</button>
+              <button type="button" class="btn-siguiente" onclick="nextStepCombo(3)">Siguiente</button>
             </div>
           </div>
 
@@ -1131,7 +1132,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 <option value="jumbo|240">Jumbo (16 rebanadas) - $240</option>
               </select>
             </div>
-            <button type="button" class="btn-siguiente" onclick="nextStep(2)">Siguiente</button>
+            <button type="button" class="btn-siguiente" onclick="nextStep(3)">Siguiente</button>
           </div>
 
           <div class="form-row full" id="pizzaFlavorRow">
@@ -1305,7 +1306,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                 </div>
 
               </div>
-              <button type="button" class="btn-siguiente" onclick="nextStep(4)">Siguiente</button>
+              <button type="button" class="btn-siguiente" onclick="nextStep(5)">Siguiente</button>
             </div>
           </div>
 
@@ -1328,7 +1329,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
                   </div>
                 </div>
               </div>
-              <button type="button" class="btn-siguiente" onclick="nextStep(5)" style="display:none;" id="comboDrinkNextBtn">Siguiente</button>
+              <button type="button" class="btn-siguiente" onclick="nextStepCombo(4)" style="display:none;" id="comboDrinkNextBtn">Siguiente</button>
             </div>
           </div>
 
@@ -1348,7 +1349,7 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
               <label class="form-label">Dirección de Envío</label>
               <input type="text" class="form-input" id="addressInput" placeholder="Calle, número, referencias" required>
             </div>
-            <button type="button" class="btn-siguiente" onclick="nextStep(6)">Siguiente</button>
+            <button type="button" class="btn-siguiente" onclick="nextStepDirection()">Siguiente</button>
           </div>
 
           <div class="order-summary" id="orderSummary">
@@ -2207,7 +2208,8 @@ function orderWithQty(btn) {
                   '💳 ¿Cuál es su forma de pago? Efectivo, transferencia o tarjeta.\n\n' +
                   'AGREGA LOS SIGUIENTES DATOS A SU PEDIDO. GRACIAS.\n\n' +
                   '👤 A nombre de quien queda tu pedido:\n\n' +
-                  '📍 Envíanos tu ubicación normal para evitar errores en la entrega.';
+                  '📍 Envíanos tu ubicación normal para evitar errores en la entrega.\n\n' +
+                  'Si deseas agregar otra empanada a tu orden dime aqui.';
     
     // Codificar el mensaje
     var encodedMessage = encodeURIComponent(message);
@@ -2296,23 +2298,57 @@ function nextStep(stepNumber) {
         }
     }
 
-    // Actualizar barra de progreso ANTES de cambiar currentStep
-    // Así marca el paso actual como activo, no el siguiente
+    // Marcar el paso actual como activo ANTES de cambiar currentStep
     updateProgressBar();
 
-    // Para Paso 3, agregar pequeño delay antes de cambiar currentStep
-    // Esto asegura que la barra se actualice con currentStep = 3
-    if (currentStep === 3) {
-        setTimeout(function() {
-            currentStep = stepNumber;
-            scrollToNextSection(stepNumber);
-        }, 100);
-    } else {
-        // AHORA cambiar al siguiente paso
-        currentStep = stepNumber;
+    // Cambiar al siguiente paso
+    currentStep = stepNumber;
 
-        // Scrollear al siguiente paso
-        scrollToNextSection(stepNumber);
+    // Scrollear al siguiente paso
+    scrollToNextSection(stepNumber);
+}
+
+// Función para combos (actualiza barra de progreso ANTES de scroll)
+function nextStepCombo(stepNumber) {
+    // Validar si el paso actual tiene datos requeridos
+    if (currentStep === 1) {
+        // Paso 1 no necesita validación
+    } else if (currentStep === 2) {
+        // Validar sabor pizza 1
+        var pizza1Sel = document.getElementById('pizza1Select');
+        if (!pizza1Sel.value) {
+            alert('Por favor selecciona un sabor para Pizza 1');
+            return;
+        }
+    } else if (currentStep === 3) {
+        // Validar bebida
+        // Bebida es opcional, no requiere validación
+    } else if (currentStep === 4) {
+        // Validar nombre y teléfono
+        var name = document.getElementById('nameInput').value;
+        var phone = document.getElementById('phoneInput').value;
+        var address = document.getElementById('addressInput').value;
+        if (!name || !phone || !address) {
+            alert('Por favor completa tu nombre, teléfono y dirección');
+            return;
+        }
+    }
+
+    // Cambiar currentStep PRIMERO
+    currentStep = stepNumber;
+
+    // Actualizar barra de progreso DESPUÉS
+    updateProgressBar();
+
+    // NO hacer scroll para combos
+}
+
+// Función dinámica para el botón de Dirección (funciona para ambos flujos)
+function nextStepDirection() {
+    if (orderType === 'pizza') {
+        nextStep(6);  // Pizzas: Paso 5 → Paso 6 (Resumen)
+    } else if (orderType === 'combo') {
+        nextStepCombo(5);  // Combos: Paso 4 → Paso 5 (Resumen)
     }
 }
 
@@ -2537,7 +2573,7 @@ window.submitOrder = function(event) {
             var comboTotal = selectedComboPrice + comboDrinkPrice;
 
             message =
-                'Mi pedido es de la página web\n\n' +
+                'Su orden de la página web es la siguiente:\n\n' +
                 '🎉 COMBO ' + selectedComboNum + ': ' + selectedComboDesc + '\n' +
                 '🍕 Sabores:' + flavorLines +
                 comboDrinkLine + '\n' +
@@ -2572,7 +2608,7 @@ window.submitOrder = function(event) {
                 : '\n🛵 Delivery: Gratis';
 
             message =
-                'Mi pedido es de la página web\n\n' +
+                'Su orden de la página web es la siguiente:\n\n' +
                 '🍕 Pizza: '    + selectedPizza + '\n' +
                 '📏 Tamaño: '   + sizeText      +
                 drinkLine       +
