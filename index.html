@@ -1391,9 +1391,9 @@ footer{background:#060100;border-top:3px solid var(--rojo);padding:2rem 1.5rem;}
       <div class="modal-pizza-container">
         <div class="modal-pizza-animated">🍕</div>
       </div>
-      <div class="modal-message">Para confirmar verifique su pedido en su WhatsApp, Tu pedido se esta dirigiendo a Whatsapp. ¡Revise su Orden por Favor!.</div>
-      <div class="modal-message-small">👉¡Espera Respuesta Vía WhatsApp!</div>
-      <button type="button" class="btn-close-modal" onclick="closeConfirmationModal()">Cerrar</button>
+      <button type="button" onclick="closeConfirmationModal()" style="position:absolute;top:10px;right:14px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:22px;cursor:pointer;line-height:1;" title="Cerrar">✕</button>
+      <div class="modal-message">👉Tu pedido se va dirigir a WhatsApp Revisa tu Orden en el Chat. Da clic en el botón para recibir el tiempo estimado de entrega. Si esta correcta da en enviar.</div>
+      <button type="button" class="btn-close-modal" onclick="sendToWhatsApp()">📱 Enviar a WhatsApp</button>
     </div>
   </div>
 </section>
@@ -2232,6 +2232,7 @@ function goToComboOrder() {
 /* ══════════════════════════════════════════════════════ */
 
 var currentStep = 1;
+var pendingWhatsappURL = '';
 
 function nextStep(stepNumber) {
     // Validar si el paso actual tiene datos requeridos
@@ -2439,6 +2440,15 @@ function closeConfirmationModal() {
     }, 300);
 }
 
+function sendToWhatsApp() {
+    // Solo abre WhatsApp cuando el usuario presiona el botón del modal
+    if (pendingWhatsappURL) {
+        window.open(pendingWhatsappURL, '_blank');
+        pendingWhatsappURL = '';
+    }
+    closeConfirmationModal();
+}
+
 function resetForm() {
     document.querySelectorAll('.pizza-option').forEach(function(el) {
         el.classList.remove('selected');
@@ -2488,8 +2498,7 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Modificar submitOrder para mostrar modal en lugar de enviar a WhatsApp
-var originalSubmitOrder = submitOrder;
+// submitOrder: muestra el modal y guarda la URL de WhatsApp — NO abre WhatsApp automáticamente
 window.submitOrder = function(event) {
     event.preventDefault();
 
@@ -2520,149 +2529,110 @@ window.submitOrder = function(event) {
         return;
     }
 
+    // Construir el mensaje ANTES de mostrar el modal
+    var message = '';
+
+    if (orderType === 'combo') {
+        if (selectedComboNum === 0) {
+            alert('Por favor selecciona un combo');
+            return;
+        }
+
+        var pizza1 = document.getElementById('pizza1Select').value;
+        var pizza2 = document.getElementById('pizza2Select').value;
+        var pizza3 = document.getElementById('pizza3Select').value;
+
+        if (comboFlavorCount === 2) {
+            if (!pizza1 || !pizza2) {
+                alert('Por favor selecciona el sabor de las 2 pizzas en los dropdowns');
+                return;
+            }
+            comboFlavors = [pizza1, pizza2];
+        } else if (comboFlavorCount === 3) {
+            if (!pizza1 || !pizza2 || !pizza3) {
+                alert('Por favor selecciona el sabor de las 3 pizzas en los dropdowns');
+                return;
+            }
+            comboFlavors = [pizza1, pizza2, pizza3];
+        }
+
+        var missingFlavors = comboFlavors.some(function(f){ return f === ''; });
+        if (missingFlavors) {
+            alert('Por favor selecciona el sabor de todas las pizzas del combo');
+            return;
+        }
+
+        var flavorLines = '';
+        for (var i = 0; i < comboFlavors.length; i++) {
+            flavorLines += '\n   • Pizza ' + (i + 1) + ': ' + comboFlavors[i];
+        }
+
+        var comboDrinkLine = '\n🥤 Bebida: ' + comboDrinkName;
+        if (comboDrinkPrice > 0) {
+            comboDrinkLine += ' (+$' + comboDrinkPrice + ')';
+        }
+
+        var comboTotal = selectedComboPrice + comboDrinkPrice;
+
+        message =
+            'Su orden de la página web es la siguiente:\n\n' +
+            '🎉 COMBO ' + selectedComboNum + ': ' + selectedComboDesc + '\n' +
+            '🍕 Sabores:' + flavorLines +
+            comboDrinkLine + '\n' +
+            '🛵 Delivery: Gratis\n' +
+            '💰 Total: $' + comboTotal + '\n\n' +
+            '👤 Nombre: '    + name    + '\n' +
+            '📱 Teléfono: '  + phone   + '\n' +
+            '📍 Dirección: ' + address + '\n\n' +
+            '📍 Para evitar error en entrega, envíanos tu ubicación normal.' + '\n\n' +
+            '💳 Para procesar su pedido ¿cuál será su forma de pago?: Pago en efectivo a la entrega, transferencia o con tarjeta.';
+
+    } else {
+        var sizeSelect     = document.getElementById('sizeSelect');
+        var selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+
+        if (!selectedPizza) {
+            alert('Por favor selecciona un sabor de pizza');
+            return;
+        }
+        if (!selectedOption.value) {
+            alert('Por favor selecciona un tamaño de pizza');
+            return;
+        }
+
+        var sizeText     = selectedOption.text.split(' - ')[0];
+        var total        = selectedSizePrice + selectedDrinkPrice + selectedDelivery;
+        var drinkLine    = selectedDrinkPrice > 0
+            ? '\n🥤 Bebida: ' + selectedDrinkName + ' ($' + selectedDrinkPrice + ')'
+            : '';
+        var deliveryLine = selectedDelivery > 0
+            ? '\n🛵 Delivery: $' + selectedDelivery + ' (costo de envío tamaño pequeño)'
+            : '\n🛵 Delivery: Gratis';
+
+        message =
+            'Su orden de la página web es la siguiente:\n\n' +
+            '🍕 Pizza: '    + selectedPizza + '\n' +
+            '📏 Tamaño: '   + sizeText      +
+            drinkLine       +
+            deliveryLine    + '\n' +
+            '💰 Total: $'   + total         + '\n\n' +
+            '👤 Nombre: '   + name          + '\n' +
+            '📱 Teléfono: ' + phone         + '\n' +
+            '📍 Dirección: '+ address + '\n\n' +
+            '📍 Para evitar error en entrega, envíanos tu ubicación normal.' + '\n\n' +
+            '💳 Para procesar su pedido ¿cuál será su forma de pago?: Pago en efectivo a la entrega, transferencia o con tarjeta.';
+    }
+
+    // Guardar la URL — el botón del modal decide cuándo abrirla
+    pendingWhatsappURL = 'https://wa.me/5215659941905?text=' + encodeURIComponent(message);
+
     // Mostrar modal de confirmación
     showConfirmationModal();
 
-    // Después de 3 segundos, enviar a WhatsApp automáticamente
+    // Cerrar modal automáticamente tras 5 minutos si el usuario no interactúa
     setTimeout(function() {
-        // Enviar a WhatsApp
-        var message = '';
-
-        if (orderType === 'combo') {
-            if (selectedComboNum === 0) {
-                alert('Por favor selecciona un combo');
-                return;
-            }
-
-            var pizza1 = document.getElementById('pizza1Select').value;
-            var pizza2 = document.getElementById('pizza2Select').value;
-            var pizza3 = document.getElementById('pizza3Select').value;
-
-            if (comboFlavorCount === 2) {
-                if (!pizza1 || !pizza2) {
-                    alert('Por favor selecciona el sabor de las 2 pizzas en los dropdowns');
-                    return;
-                }
-                comboFlavors = [pizza1, pizza2];
-            } else if (comboFlavorCount === 3) {
-                if (!pizza1 || !pizza2 || !pizza3) {
-                    alert('Por favor selecciona el sabor de las 3 pizzas en los dropdowns');
-                    return;
-                }
-                comboFlavors = [pizza1, pizza2, pizza3];
-            }
-
-            var missingFlavors = comboFlavors.some(function(f){ return f === ''; });
-            if (missingFlavors) {
-                alert('Por favor selecciona el sabor de todas las pizzas del combo');
-                return;
-            }
-
-            var flavorLines = '';
-            for (var i = 0; i < comboFlavors.length; i++) {
-                flavorLines += '\n   • Pizza ' + (i + 1) + ': ' + comboFlavors[i];
-            }
-
-            var comboDrinkLine = '\n🥤 Bebida: ' + comboDrinkName;
-            if (comboDrinkPrice > 0) {
-                comboDrinkLine += ' (+$' + comboDrinkPrice + ')';
-            }
-
-            var comboTotal = selectedComboPrice + comboDrinkPrice;
-
-            message =
-                'Su orden de la página web es la siguiente:\n\n' +
-                '🎉 COMBO ' + selectedComboNum + ': ' + selectedComboDesc + '\n' +
-                '🍕 Sabores:' + flavorLines +
-                comboDrinkLine + '\n' +
-                '🛵 Delivery: Gratis\n' +
-                '💰 Total: $' + comboTotal + '\n\n' +
-                '👤 Nombre: '    + name    + '\n' +
-                '📱 Teléfono: '  + phone   + '\n' +
-                '📍 Dirección: ' + address + '\n\n' +
-                '📍 Para evitar error en entrega, envíanos tu ubicación normal.' + '\n\n' +
-                '💳 Para procesar su pedido ¿cuál será su forma de pago?: Pago en efectivo a la entrega, transferencia o con tarjeta.';
-
-        } else {
-            var sizeSelect     = document.getElementById('sizeSelect');
-            var selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
-
-            if (!selectedPizza) {
-                alert('Por favor selecciona un sabor de pizza');
-                return;
-            }
-            if (!selectedOption.value) {
-                alert('Por favor selecciona un tamaño de pizza');
-                return;
-            }
-
-            var sizeText     = selectedOption.text.split(' - ')[0];
-            var total        = selectedSizePrice + selectedDrinkPrice + selectedDelivery;
-            var drinkLine    = selectedDrinkPrice > 0
-                ? '\n🥤 Bebida: ' + selectedDrinkName + ' ($' + selectedDrinkPrice + ')'
-                : '';
-            var deliveryLine = selectedDelivery > 0
-                ? '\n🛵 Delivery: $' + selectedDelivery + ' (costo de envío tamaño pequeño)'
-                : '\n🛵 Delivery: Gratis';
-
-            message =
-                'Su orden de la página web es la siguiente:\n\n' +
-                '🍕 Pizza: '    + selectedPizza + '\n' +
-                '📏 Tamaño: '   + sizeText      +
-                drinkLine       +
-                deliveryLine    + '\n' +
-                '💰 Total: $'   + total         + '\n\n' +
-                '👤 Nombre: '   + name          + '\n' +
-                '📱 Teléfono: ' + phone         + '\n' +
-                '📍 Dirección: '+ address + '\n\n' +
-                '📍 Para evitar error en entrega, envíanos tu ubicación normal.' + '\n\n' +
-                '💳 Para procesar su pedido ¿cuál será su forma de pago?: Pago en efectivo a la entrega, transferencia o con tarjeta.';
-        }
-
-        var whatsappLink = 'https://wa.me/5215659941905?text=' + encodeURIComponent(message);
-        window.open(whatsappLink, '_blank');
-
-        // Limpiar formulario
-        document.getElementById('purchaseForm').reset();
-        // Resetear dropdowns de combos
-        if (document.getElementById('pizza1Select')) document.getElementById('pizza1Select').value = '';
-        if (document.getElementById('pizza2Select')) document.getElementById('pizza2Select').value = '';
-        if (document.getElementById('pizza3Select')) document.getElementById('pizza3Select').value = '';
-        document.querySelectorAll('.pizza-option').forEach(function(el) {
-            el.classList.remove('selected');
-        });
-        document.querySelectorAll('.drink-card').forEach(function(c) {
-            c.classList.remove('selected');
-        });
-        document.getElementById('dk-none').classList.add('selected');
-        document.querySelectorAll('.combo-drink-opt').forEach(function(c) {
-            c.classList.remove('selected');
-        });
-        document.querySelectorAll('.combo-drink-opt')[0].classList.add('selected');
-
-        selectedPizza      = null;
-        selectedSizePrice  = 0;
-        selectedDrinkPrice = 0;
-        selectedDrinkName  = 'Sin bebida';
-        selectedDelivery   = 0;
-        comboDrinkPrice    = 0;
-        comboDrinkName     = 'Jarritos 2L (incluido)';
-        resetCombo();
-        setOrderType('pizza');
-        document.querySelectorAll('.order-type-btn')[0].classList.add('active');
-        document.querySelectorAll('.order-type-btn')[1].classList.remove('active');
-        updatePrice();
-
-        // Cerrar modal
-        var modal = document.getElementById('confirmationModal');
-        modal.classList.remove('active');
-        setTimeout(function() {
-            modal.style.display = 'none';
-            currentStep = 1;
-            updateProgressBar();
-            scrollToForm();
-        }, 300);
-    }, 3000);
+        closeConfirmationModal();
+    }, 300000);
 };
 
 </script>
